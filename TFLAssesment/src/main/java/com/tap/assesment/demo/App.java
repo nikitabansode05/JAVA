@@ -1,61 +1,63 @@
 package com.tap.assesment.demo;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.tap.assesment.Entity.Question;
 import com.tap.assesment.Repository.QuestionBank;
-import com.tap.assesment.UI.UIManager;
+import com.tap.assesment.ui.UIManager;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
-       QuestionBank qBank=new QuestionBank();
-       UIManager ui=new UIManager();
-       int choice;
-       do{ 
-         ui.displayMenu();
-         choice=ui.getChoice();
-         switch(choice){
-            case 1:{
-                     System.out.println("*****************************************************");
-                     System.out.println("You choose to create a question");
-                     System.out.println("*****************************************************");
-                     qBank.CreateQuestion();
-                     System.out.println("*****************************************************");
+public class App {
+    public static void main(String[] args) {
+        QuestionBank questionBank = new QuestionBank();
+             
+        Question q=new Question();
+        q.setId(1);
+        int id=q.getId();
+        q.toString();
+
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        int choice;
+        UIManager uiManager = new UIManager();
+        
+        while (running) {
+
+            uiManager.displayMenu();
+
+            choice = uiManager.getUserChoice();
+
+            switch (choice) {
+                case 1:
+                    // Add Question
+                    Question newQuestion = uiManager.getQuestionInput();
+                    questionBank.addQuestion(newQuestion);
+                    break;
+                case 2:
+ 
+                    // Remove Question
+                    int questionIdToRemove = uiManager.getQuestionIdInput();
+                    questionBank.removeQuestion(questionIdToRemove);
+                    break;
+                case 3:
+                
+                    // Update Question
+                    int questionIdToUpdate = uiManager.getQuestionIdInput();
+                    Question updatedQuestion = uiManager.getQuestionInput();
+                    questionBank.updateQuestion(questionIdToUpdate, updatedQuestion);
+                    break;
+                case 4:
+                    // View All Questions
+                    List<Question> allQuestions = questionBank.getAllQuestions();
+                    uiManager.displayQuestions(allQuestions);
+                    break;
+                case 5:
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
-           
-            break;
-
-            case 2:
-            {
-                System.out.println("*****************************************************");
-                System.out.println("You choose to update a question");
-                System.out.println("*****************************************************");
-                int id=ui.getId();
-                qBank.updateQuestion(id);
-            }
-            break;
-
-            case 3:
-            System.out.println("You choose to delete a question");
-            break;
-
-            case 4:{
-                    System.out.println("*****************************************************");
-                    System.out.println("You choose to view all question");
-                    System.out.println("*****************************************************");
-                    qBank.readAllQuestion();
-                    System.out.println("*****************************************************");
-            }
-            
-            break;
-
-            case 5:
-            System.out.println("************Thanks for visiting************");
-            break;
-
-            default:
-            System.out.println("Invalid choice");
-            break;
         }
-
-       }while(choice!=5);
     }
 }
