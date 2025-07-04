@@ -1,7 +1,4 @@
-E:\TAP\JAVA\TFLAssesment\src\main\java\com\tap\assesment\demo\App.java
-E:\TAP\JAVA\TFLAssesment\src\main\java\com\tap\assesment\Entity\Question.java
-E:\TAP\JAVA\TFLAssesment\src\main\java\com\tap\assesment\Repository\QuestionBank.java
-E:\TAP\JAVA\TFLAssesment\src\main\java\com\tap\assesment\Store\DBManager.java
-E:\TAP\JAVA\TFLAssesment\src\main\java\com\tap\assesment\Store\FileIOManager.java
-E:\TAP\JAVA\TFLAssesment\src\main\java\com\tap\assesment\ui\UIManager.java
-E:\TAP\JAVA\TFLAssesment\src\main\java\com\tap\assesment\Utils\DBConnection.java
+E:\TAP\JAVA\Maven\TFLAssesment\src\main\java\com\tap\assesment\demo\App.java
+E:\TAP\JAVA\Maven\TFLAssesment\src\main\java\com\tap\assesment\Entity\Question.java
+E:\TAP\JAVA\Maven\TFLAssesment\src\main\java\com\tap\assesment\Repository\QuestionBank.java
+E:\TAP\JAVA\Maven\TFLAssesment\src\main\java\com\tap\assesment\UI\UIManager.java

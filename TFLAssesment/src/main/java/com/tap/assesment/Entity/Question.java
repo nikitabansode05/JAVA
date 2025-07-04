@@ -1,11 +1,8 @@
 package com.tap.assesment.Entity;
 
-//POJO class for Question entity
-//Plain Old Java Object
 public class Question {
-
-    private String title;
     private int id;
+    private String title;
     private String optionA;
     private String optionB;
     private String optionC;
@@ -13,116 +10,59 @@ public class Question {
     private char correctAnswer;
     private String subject;
     private int evaluationCriteria;
-public Question()
-{
-    this.id=0;
-    this.title=null;
-    this.optionA=null;
-    this.optionB=null;
-    this.optionC=null;
-    this.optionD=null;
-    this.correctAnswer='\0';
-    this.subject=null;
-    this.evaluationCriteria=0;
-}
 
-    public Question(int id, String title, String optionA, String optionB, String optionC, String optionD, char correctAnswer,
-            String  subject, int evaluationCriteria) {
-        this.id = id; 
-        this.title = title;
-        this.optionA = optionA;
-        this.optionB = optionB;
-        this.optionC = optionC;
-        this.optionD = optionD;
-        this.correctAnswer = correctAnswer;
-        this.subject = subject;
-        this.evaluationCriteria = evaluationCriteria;
+    public Question(){
+        id=0;
+        title=null;
+        optionA=null;
+        optionB=null;
+        optionC=null;
+        optionD=null;
+        correctAnswer='\0';
+        subject=null;
+        evaluationCriteria=28;
     }
 
-
-
-    public int getId() {
-        return id;
+    public Question(int id,String title,String optionA,String optionB,String optionC,String optionD,char correctAnswer,String subject,int evaluationCriteria){
+        this.id=id;
+        this.title=title;
+        this.optionA=optionA;
+        this.optionB=optionB;
+        this.optionC=optionC;
+        this.optionD=optionD;
+        this.correctAnswer=correctAnswer;
+        this.subject=subject;
+        this.evaluationCriteria=evaluationCriteria;
     }
 
-    public String getTitle() {
-        return title;
-    }
+        public void setId(int id){this.id=id;}
+        public int getId(){return id;}
 
-    public String getSubject() {
-        return subject;
-    }
+        public void setTitle(String title){this.title=title;}
+        public String getTitle(){return title;}
+    
+        public void setOptionA(String a){this.optionA=a;}
+        public String getOptionA(){return optionA;}
 
-    public String getOptionA() {
-        return optionA;
-    }
+        public void setOptionB(String b){this.optionB=b;}
+        public String getOptionB(){return optionB;}
 
-    public String getOptionB() {
-        return optionB;
-    }
+        public void setOptionC(String c){this.optionC=c;}
+        public String getOptionC(){return optionC;}
 
-    public String getOptionC() {
-        return optionC;
-    }
+        public void setOptionD(String d){this.optionD=d; }
+        public String getOptionD(){return optionD;}
 
-    public String getOptionD() {
-        return optionD;
-    }
+        public void setCorrectAnswer(char c){this.correctAnswer=c;}
+        public char getCorrectAnswer(){return correctAnswer;}
 
-    public char getCorrectAnswer() {
-        return correctAnswer;
-    }
+        public void setSubject(String subject){this.subject=subject;}
+        public String getSubject(){return subject;}
 
-    public int getEvaluationCriteria() {
-        return evaluationCriteria;
-    }
+        public void setEvaluationCriteria(int criteria){this.evaluationCriteria=criteria;}
+        public int getEvaluationCriteria(){return evaluationCriteria;}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setOptionA(String optionA) {
-        this.optionA = optionA;
-    }
-
-    public void setOptionB(String optionB) {
-        this.optionB = optionB;
-    }
-
-    public void setOptionC(String optionC) {
-        this.optionC = optionC;
-    }
-
-    public void setOptionD(String optionD) {
-        this.optionD = optionD;
-    }
-
-    public void setCorrectAnswer(char correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public void setEvaluationCriteria(int evaluationCriteria) {
-        this.evaluationCriteria = evaluationCriteria;
-    }
-
-    @Override
-    public String toString() {
-        return "Question{" + "title='" + title + ", id=" + id + ", optionA='" + optionA +
-                ", optionB='" + optionB +
-                ", optionC='" + optionC +
-                ", optionD='" + optionD +
-                ", correctAnswer=" + correctAnswer +
-                ", subject=" + subject +
-                ", evaluationCriteria=" + evaluationCriteria +
-                '}';
-    }
-
+        public String toString(){
+            return ("Id : "+id+" "+"Title : "+title+" "+"Option A : "+optionA+" "+"Option B : "+optionB+" "+"Option C : "+optionC+"Option D : "+optionD+"Correct Answer : "+correctAnswer+"Evaluation Criteria"+evaluationCriteria);
+        }
 }
