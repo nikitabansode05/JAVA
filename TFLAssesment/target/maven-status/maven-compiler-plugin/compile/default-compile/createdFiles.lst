@@ -1,4 +1,6 @@
+com\tap\assesment\Store\DBManager.class
 com\tap\assesment\Entity\Question.class
 com\tap\assesment\Repository\QuestionBank.class
 com\tap\assesment\demo\App.class
+com\tap\assesment\Store\fileio.class
 com\tap\assesment\UI\UIManager.class
