@@ -1,0 +1,7 @@
+com\tap\repo\Controllers\StudentController.class
+com\tap\repo\Repository\IStudentRepository.class
+com\tap\repo\UI\StudentMenu.class
+com\tap\repo\demo\App.class
+com\tap\repo\Entity\Student.class
+com\tap\repo\Repository\StudentRepository.class
+com\tap\repo\Services\StudentService.class
