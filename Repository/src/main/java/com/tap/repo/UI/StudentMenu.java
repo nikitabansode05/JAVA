@@ -3,8 +3,9 @@ package com.tap.repo.UI;
 import java.util.Scanner;
 
 public class StudentMenu {
-    private Scanner input=new Scanner(System.in);
-    public int displayMenu(){
+    private Scanner input = new Scanner(System.in);
+
+    public int displayMenu() {
         System.out.println("*********** Welcome to NEMS ***********");
         System.out.println("1)Enter the student details");
         System.out.println("2)Update the student details");
@@ -15,14 +16,14 @@ public class StudentMenu {
         System.out.println("********************************");
 
         System.out.println("Enter your choice");
-        
-        int choice=input.nextInt();
+
+        int choice = input.nextInt();
         return choice;
     }
 
-    public int getNumber(){
+    public int getNumber() {
         System.out.println("Enter the roll number : ");
-        int id=input.nextInt();
+        int id = input.nextInt();
         return id;
     }
 }
