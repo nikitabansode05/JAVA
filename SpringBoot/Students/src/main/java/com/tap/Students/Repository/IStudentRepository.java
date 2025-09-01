@@ -8,5 +8,5 @@ public interface IStudentRepository {
     void update();
     void display();
     void delete();
-    Student getById(int id);
+  //  Student getById(int id);
 }

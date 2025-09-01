@@ -69,8 +69,8 @@ public class StudentRepositoryImpl implements IStudentRepository {
         }
     }
 
-    public Student getById(int id){
-      Student stu=new Student();
-      return stu;
-    }
+    // public Student getById(int id){
+    //   Student stu=new Student();
+    //   return stu;
+    // }
 }
