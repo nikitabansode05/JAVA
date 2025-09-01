@@ -1,4 +1,4 @@
-package com.tap.Students.Entity;
+package com.tap.students.Entity;
 
 public class Student {
     private int id;

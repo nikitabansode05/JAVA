@@ -1,12 +1,10 @@
-package com.tap.Students.Repository;
+package com.tap.students.Repository;
 
-import com.tap.Students.Entity.Student;
-
+import java.util.List;
 
 public interface IStudentRepository {
     void create();
     void update();
-    void display();
+    List<String> display();
     void delete();
-  //  Student getById(int id);
 }

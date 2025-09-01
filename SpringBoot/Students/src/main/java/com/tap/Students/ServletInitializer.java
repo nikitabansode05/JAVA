@@ -1,4 +1,4 @@
-package com.tap.Students;
+package com.tap.students;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
