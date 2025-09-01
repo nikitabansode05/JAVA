@@ -40,4 +40,8 @@ public class Student {
     public String getMail(){
         return email;
     }
+
+    public String toString(){
+        return ("ID :"+id +" "+"Name : "+name+" "+"E-mail : "+email);
+    }
 }

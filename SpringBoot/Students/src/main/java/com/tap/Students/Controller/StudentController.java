@@ -3,6 +3,8 @@ package com.tap.students.Controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tap.students.Entity.Student;
@@ -43,6 +45,11 @@ public class StudentController {
 
     @GetMapping("/display")
     public List<String> display() {
-        return repo.display(); // automatically runs SELECT * FROM students
+        return repo.display(); 
+    }
+
+    @GetMapping("/id/{id}")
+    public Student getById(@PathVariable("id") int id){
+        return repo.getById(id);
     }
 }

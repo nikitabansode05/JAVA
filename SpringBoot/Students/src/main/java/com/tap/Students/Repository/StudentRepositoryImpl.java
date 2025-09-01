@@ -16,8 +16,8 @@ public class StudentRepositoryImpl implements IStudentRepository {
     private static String url;
     private static Connection conn;
     private static Statement st;
+    List<Student> stu=new ArrayList<>();
     List<String> students=new ArrayList<>();
-
     static{
         try{
              password="password";
@@ -75,6 +75,28 @@ public class StudentRepositoryImpl implements IStudentRepository {
             System.out.println(e);
         }
         return students;
+    }
+
+    public Student getById(int id){
+        try{
+             ResultSet rs=st.executeQuery("select * from students");
+        while(rs.next()){
+            int id1=rs.getInt(1);
+            String name1=rs.getString(2);
+            String email=rs.getString(3);   
+            stu.add(new Student(id1,name1,email));
+        }
+        
+        for(Student student:stu){
+            if(student.getID()==id){
+                return student;
+            }
+        }
+        }catch(Exception e){
+            System.out.println(e);
+        }
+       
+        return null;
     }
 
 }
