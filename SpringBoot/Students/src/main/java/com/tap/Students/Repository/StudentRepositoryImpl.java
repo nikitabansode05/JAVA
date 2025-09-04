@@ -16,6 +16,7 @@ public class StudentRepositoryImpl implements IStudentRepository {
     private static String url;
     private static Connection conn;
     private static Statement st;
+    private static PreparedStatement ps;
     List<Student> stu=new ArrayList<>();
     List<String> students=new ArrayList<>();
     static{
@@ -39,26 +40,37 @@ public class StudentRepositoryImpl implements IStudentRepository {
         Student student= stu;
     }
 
-    public void create(){
+    public void create(String name,String email){
        try{
-            st.executeUpdate("insert into students(name,email) values('Anant Ambani','anant@gmail.com')");
+            //st.executeUpdate("insert into students(name,email) values('Anant Ambani','anant@gmail.com')");
+            ps=conn.prepareStatement("insert into students(name,email) values(?,?)");
+            ps.setString(1,name);
+            ps.setString(2,email);
+            ps.executeUpdate();
+
        }catch(Exception e){
         System.out.println(e);
        }   
     }
 
-    public void update(){
+    public void update(String name,int id){
         try{
-            st.executeUpdate("update students set name='Mukesh' where id=4");
+            //st.executeUpdate("update students set name='Mukesh' where id=4");
+            ps=conn.prepareStatement("update students set name=? where id=?");
+            ps.setString(1,name);
+            ps.setInt(2,id);
+            ps.executeUpdate();
         }catch(Exception e){
             System.out.println(e);
         }
-        
     } 
 
-    public void delete(){
+    public void delete(int id){
         try{
-            st.executeUpdate("delete from students where id=4");
+            //st.executeUpdate("delete from students where id=4");
+            ps=conn.prepareStatement("delete from students where id=?");
+            ps.setInt(1,id);
+            ps.executeUpdate();
         }catch(Exception e){
             System.out.println(e);
         }    
@@ -85,8 +97,7 @@ public class StudentRepositoryImpl implements IStudentRepository {
             String name1=rs.getString(2);
             String email=rs.getString(3);   
             stu.add(new Student(id1,name1,email));
-        }
-        
+        }     
         for(Student student:stu){
             if(student.getID()==id){
                 return student;
@@ -95,8 +106,6 @@ public class StudentRepositoryImpl implements IStudentRepository {
         }catch(Exception e){
             System.out.println(e);
         }
-       
         return null;
     }
-
 }

@@ -26,20 +26,20 @@ public class StudentController {
     }
 
     @GetMapping("/insert")
-    public String insert(){
-        repo.create();
+    public String insert(@RequestParam String name,@RequestParam String email){
+        repo.create(name,email);
         return "<h2>Student inserted to the table</h2>";
     }
 
     @GetMapping("/update")
-    public String update(){
-        repo.update();
+    public String update(@RequestParam String name,@RequestParam int id){
+        repo.update(name,id);
         return "<h2>Student updated in the table</h2>";
     }
 
     @GetMapping("/delete")
-    public String delete(){
-        repo.delete();
+    public String delete(@RequestParam int id){
+        repo.delete(id);
         return "<h2>Student deleted from the table";
     }
 
