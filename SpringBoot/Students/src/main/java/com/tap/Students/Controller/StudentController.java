@@ -2,54 +2,56 @@ package com.tap.students.Controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tap.students.Entity.Student;
-import com.tap.students.Repository.StudentRepositoryImpl;
-
+import com.tap.students.Service.*;
+import java.util.concurrent.CompletableFuture;
+import com.tap.students.Service.IStudentService;
 
 @RestController
 public class StudentController {
    
-    private StudentRepositoryImpl repo;
+    private IStudentService service;
 
-    public StudentController(StudentRepositoryImpl repo){
-        this.repo=repo;
+    public StudentController(IStudentService service){
+        this.service=service;
     }
 
-    @GetMapping("/")
-    public String show(){
-        return "<h1>Welcome to Student Info page</h1>";
+    // @GetMapping("/")
+    // public CompletableFuture<String> show(){
+    //     return "<h1>Welcome to Student Info page</h1>";
+    // }
+
+    @PostMapping("/insert")
+    public CompletableFuture<Boolean> insert(@RequestParam String name,@RequestParam String email){
+               return service.create(name,email);
+
     }
 
-    @GetMapping("/insert")
-    public String insert(@RequestParam String name,@RequestParam String email){
-        repo.create(name,email);
-        return "<h2>Student inserted to the table</h2>";
+    @PostMapping("/update")
+    public CompletableFuture<Boolean> update(@RequestParam String name,@RequestParam int id){
+        return service.update(name,id);
     }
 
-    @GetMapping("/update")
-    public String update(@RequestParam String name,@RequestParam int id){
-        repo.update(name,id);
-        return "<h2>Student updated in the table</h2>";
-    }
-
-    @GetMapping("/delete")
-    public String delete(@RequestParam int id){
-        repo.delete(id);
-        return "<h2>Student deleted from the table";
+    @DeleteMapping("/delete")
+    public CompletableFuture<Boolean> delete(@RequestParam int id){
+        return service.delete(id);
     }
 
     @GetMapping("/display")
-    public List<String> display() {
-        return repo.display(); 
+    public CompletableFuture<List<String>> display() {
+        return service.display(); 
     }
 
     @GetMapping("/id/{id}")
-    public Student getById(@PathVariable("id") int id){
-        return repo.getById(id);
+    public CompletableFuture<Student> getById(@PathVariable("id") int id){
+        return service.getById(id);
     }
 }
