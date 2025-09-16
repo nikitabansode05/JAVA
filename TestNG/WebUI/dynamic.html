@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Content Page</title>
+    <style>
+        #content {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 50px;
+        }
+        button {
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function loadContent() {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = 'Loading...';
+            setTimeout(() => {
+                contentDiv.innerHTML = '<ul>' +
+                    '<li>Item 1</li>' +
+                    '<li>Item 2</li>' +
+                    '<li>Item 3</li>' +
+                    '</ul>';
+            }, 1500); // simulate dynamic load delay
+        }
+    </script>
+</head>
+<body>
+    <h1>Dynamic Content Test Page</h1>
+    <button data-test="btn-load" onclick="loadContent()">Load Content</button>
+    <div id="content"></div>
+</body>
+</html>

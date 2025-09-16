@@ -1,0 +1,33 @@
+<!-- FILE: download.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Download</title>
+</head>
+<body>
+<h1>Download demo</h1>
+<a id="dl" href="data:text/plain,Hello%20from%20Selenium" download="hello.txt" data-test="link-download">Download text</a>
+</body>
+</html>
+
+
+<!-- FILE: richtext.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Rich Text</title>
+</head>
+<body>
+<h1>Rich text area</h1>
+<div id="editor" contenteditable="true" style="border:1px solid #ccc;padding:8px;min-height:120px" data-test="rich-editor">Type <b>bold</b> text</div>
+<button id="save" data-test="btn-save">Save</button>
+<pre id="out"></pre>
+<script>
+document.getElementById('save').addEventListener('click', ()=>{
+document.getElementById('out').textContent = document.getElementById('editor').innerHTML;
+});
+</script>
+</body>
+</html>

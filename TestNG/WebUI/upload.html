@@ -1,0 +1,24 @@
+<!-- FILE: upload.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Upload</title>
+</head>
+<body>
+<h1>File Upload</h1>
+<form id="uploadForm">
+<input type="file" id="fileInput" data-test="input-file"><br>
+<button id="btnUpload" data-test="btn-upload" type="button">Upload</button>
+</form>
+<pre id="status"></pre>
+<script>
+document.getElementById('btn-upload').addEventListener('click', ()=>{
+const f = document.getElementById('fileInput').files[0];
+const st = document.getElementById('status');
+if(!f) return st.textContent='No file selected';
+st.textContent = 'Selected: ' + f.name + ' (' + f.size + ' bytes)';
+});
+</script>
+</body>
+</html>

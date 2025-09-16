@@ -1,0 +1,29 @@
+<!-- FILE: modal.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Modal</title>
+<style>#modal{display:none;position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.5)}#modal .inner{background:#fff; padding:20px; width:300px; margin:100px auto;border-radius:6px}</style>
+</head>
+<body>
+<h1>Modal Demo</h1>
+<button id="openModal" data-test="btn-open-modal">Open Modal</button>
+<div id="modal" role="dialog" aria-modal="true">
+<div class="inner">
+<p>Are you sure?</p>
+<button id="confirm" data-test="btn-confirm">Confirm</button>
+<button id="cancel" data-test="btn-cancel">Cancel</button>
+</div>
+</div>
+<script>
+const modal = document.getElementById('modal');
+document.getElementById('openModal').addEventListener('click', ()=> modal.style.display='block');
+document.getElementById('cancel').addEventListener('click', ()=> modal.style.display='none');
+document.getElementById('confirm').addEventListener('click', ()=>{
+modal.style.display='none';
+alert('Confirmed!');
+});
+</script>
+</body>
+</html>

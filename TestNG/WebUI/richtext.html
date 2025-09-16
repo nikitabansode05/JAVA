@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rich Text Editor Test</title>
+    <style>
+        #editor {
+            border: 1px solid #ccc;
+            min-height: 150px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 6px 10px;
+            font-size: 14px;
+        }
+        #output {
+            margin-top: 15px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            min-height: 50px;
+        }
+    </style>
+    <script>
+        function saveContent() {
+            const editor = document.getElementById('editor');
+            const output = document.getElementById('output');
+            output.textContent = editor.innerHTML;
+        }
+    </script>
+</head>
+<body>
+    <h1>Rich Text Editor</h1>
+
+    <!-- Rich Text Editor Area -->
+    <div id="editor" contenteditable="true" data-test="editor">
+        <p>Type something here...</p>
+    </div>
+
+    <!-- Save Button -->
+    <button data-test="btn-save" onclick="saveContent()">Save</button>
+
+    <!-- Output Area -->
+    <div id="output" data-test="output"></div>
+</body>
+</html>

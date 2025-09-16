@@ -1,0 +1,50 @@
+<!-- FILE: login.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Login by pradnya</title>
+<style>body{font-family:Arial;padding:20px}</style>
+</head>
+<body>
+<h1>Login</h1>
+<form id="loginForm" action="#" onsubmit="return handleLogin(event)">
+<label for="username">Username</label><br>
+<input id="username" name="username" data-test="input-username" required /><br><br>
+
+
+<label for="password">Password</label><br>
+<input id="password" type="password" name="password" data-test="input-password" required minlength="4" /><br><br>
+
+
+<input type="checkbox" id="remember" name="remember" data-test="checkbox-remember">
+<label for="remember"> Remember me</label><br><br>
+
+
+<button type="submit" data-test="btn-login" id="loginButton">Login</button>
+</form>
+
+
+<p id="message" role="status" aria-live="polite"></p>
+
+
+<script>
+function handleLogin(e){
+e.preventDefault();
+const u = document.getElementById('username').value;
+const p = document.getElementById('password').value;
+const msg = document.getElementById('message');
+if(u === 'admin' && p === 'admin'){
+msg.textContent = 'Login successful';
+msg.dataset.status = 'success';
+// simulate navigation
+setTimeout(()=> location.href = 'index.html', 700);
+} else {
+msg.textContent = 'Invalid credentials';
+msg.dataset.status = 'error';
+}
+return false;
+}
+</script>
+</body>
+</html>

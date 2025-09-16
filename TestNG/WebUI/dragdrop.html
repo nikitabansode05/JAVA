@@ -1,0 +1,21 @@
+<!-- FILE: dragdrop.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Drag and Drop</title>
+<style>.box{width:150px;height:100px;border:1px solid #333;display:inline-block;margin-right:10px;padding:8px}</style>
+</head>
+<body>
+<h1>Drag & Drop</h1>
+<div id="drag1" draggable="true" class="box" data-test="drag-source">DRAG ME</div>
+<div id="drop1" class="box" data-test="drop-target">DROP HERE</div>
+<script>
+const s = document.getElementById('drag1');
+s.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain','dragged'));
+const t = document.getElementById('drop1');
+t.addEventListener('dragover', e=> e.preventDefault());
+t.addEventListener('drop', e=>{ e.preventDefault(); t.textContent='Dropped!'; });
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!-- FILE: canvas.html -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"/><title>Canvas</title></head>
+<body>
+<h1>Canvas</h1>
+<canvas id="c" width="400" height="120" style="border:1px solid #ccc"></canvas>
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+ctx.fillStyle = '#f0f0f0';
+ctx.fillRect(10,10,100,50);
+ctx.fillStyle = '#333'; ctx.fillText('Canvas text',20,40);
+</script>
+</body>
+</html>

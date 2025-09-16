@@ -1,0 +1,27 @@
+<!-- FILE: table.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Table</title>
+<style>table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:6px}</style>
+</head>
+<body>
+<h1>Users Table</h1>
+<table id="users">
+<thead>
+<tr><th><a href="#" data-test="sort-name">Name</a></th><th>Email</th><th>Actions</th></tr>
+</thead>
+<tbody>
+<tr data-test-row="r1"><td>Alice</td><td>alice@example.com</td><td><button data-test="btn-edit-1">Edit</button></td></tr>
+<tr data-test-row="r2"><td>Bob</td><td>bob@example.com</td><td><button data-test="btn-edit-2">Edit</button></td></tr>
+<tr data-test-row="r3"><td>Charlie</td><td>charlie@example.com</td><td><button data-test="btn-edit-3">Edit</button></td></tr>
+</tbody>
+</table>
+<div id="pager">
+<button data-test="page-prev">Prev</button>
+<span data-test="page-info">1/1</span>
+<button data-test="page-next">Next</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!-- FILE: multi-step-form.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Multi-step Wizard</title>
+<style>.step{display:none}.step.active{display:block} .controls{margin-top:12px}</style>
+</head>
+<body>
+<h1>Wizard</h1>
+<div id="step1" class="step active">
+<h2>Step 1</h2>
+<label>Name <input data-test="wizard-name"></label>
+<div class="controls"><button data-test="wizard-next">Next</button></div>
+</div>
+<div id="step2" class="step">
+<h2>Step 2</h2>
+<label>Age <input data-test="wizard-age"></label>
+<div class="controls"><button data-test="wizard-back">Back</button><button data-test="wizard-submit">Submit</button></div>
+</div>
+
+
+<div id="wizardMsg" role="status"></div>
+
+
+<script>
+document.querySelector('[data-test="wizard-next"]').addEventListener('click', ()=>{
+document.getElementById('step1').classList.remove('active');
+document.getElementById('step2').classList.add('active');
+});
+document.querySelector('[data-test="wizard-back"]').addEventListener('click', ()=>{
+document.getElementById('step2').classList.remove('active');
+document.getElementById('step1').classList.add('active');
+});
+document.querySelector('[data-test="wizard-submit"]').addEventListener('click', ()=>{
+document.getElementById('wizardMsg').textContent = 'Wizard finished';
+});
+</script>
+</body>
+</html>

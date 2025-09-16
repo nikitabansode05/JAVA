@@ -1,0 +1,39 @@
+<!-- FILE: iframe.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Iframe Example</title>
+</head>
+<body>
+<h1>Iframe page</h1>
+<iframe id="frame" srcdoc="<p id=\'inside\'>Inside iframe</p><button id=\'btnInside\'>Click</button><script>document.getElementById('btnInside').addEventListener('click', ()=>document.getElementById('inside').textContent='Clicked')</script>" width="600" height="200"></iframe>
+</body>
+</html>
+
+
+<!-- FILE: dynamic.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Dynamic Loading</title>
+</head>
+<body>
+<h1>AJAX-like dynamic content</h1>
+<button id="load" data-test="btn-load">Load Content</button>
+<div id="content" data-test="dynamic-area">(empty)</div>
+<script>
+document.getElementById('load').addEventListener('click', ()=>{
+document.getElementById('content').textContent = 'Loading...';
+setTimeout(()=>{
+const ul = document.createElement('ul');
+['One','Two','Three'].forEach((t,i)=>{const li=document.createElement('li'); li.textContent=t; li.dataset.index=i; ul.appendChild(li)});
+const content = document.getElementById('content');
+content.innerHTML = '';
+content.appendChild(ul);
+}, 700);
+});
+</script>
+</body>
+</html>

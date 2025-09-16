@@ -1,0 +1,61 @@
+<!-- FILE: form.html -->
+<option value="apple">Apple</option>
+<option value="banana">Banana</option>
+<option value="mango">Mango</option>
+</select>
+</label>
+
+
+<fieldset>
+<legend>Newsletter</legend>
+<label><input type="checkbox" name="news" value="daily" data-test="chk-daily"> Daily</label>
+<label><input type="checkbox" name="news" value="weekly" data-test="chk-weekly"> Weekly</label>
+</fieldset>
+
+
+<fieldset>
+<legend>Gender</legend>
+<label><input type="radio" name="gender" value="m" data-test="rdo-m"> Male</label>
+<label><input type="radio" name="gender" value="f" data-test="rdo-f"> Female</label>
+</fieldset>
+
+
+<label>Range <input type="range" name="rating" min="0" max="10" data-test="input-range"></label>
+
+
+<label>File <input type="file" name="resume" data-test="input-file"></label>
+
+
+<label>Hidden <input type="hidden" name="token" value="abc123" data-test="input-hidden"></label>
+
+
+<label>Readonly <input type="text" value="readonly text" readonly data-test="input-readonly"></label>
+
+
+<label>Disabled <input type="text" value="disabled" disabled data-test="input-disabled"></label>
+
+
+<label>Pattern <input type="text" name="zipcode" pattern="\d{5}" placeholder="5 digit" data-test="input-zip"></label>
+
+
+<label>Comments <textarea name="comments" data-test="textarea-comments"></textarea></label>
+
+
+<button type="submit" data-test="btn-submit">Submit</button>
+<button type="reset" data-test="btn-reset">Reset</button>
+</form>
+
+
+<div id="result" aria-live="polite"></div>
+
+
+<script>
+function onSubmit(e){
+e.preventDefault();
+const result = document.getElementById('result');
+result.textContent = 'Form submitted: ' + new Date().toISOString();
+return false;
+}
+</script>
+</body>
+</html>
