@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">4 methods,   4 passed</span>
+                    <span class="method-stats">7 methods,   7 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,12 +103,17 @@
                     <div class="method-list-content passed suite-Surefire_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.test.app.LoginTest" class="method navigator-link" hash-for-method="loginSuccess">loginSuccess</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.test.app.LoginTest" class="method navigator-link" hash-for-method="testName">testName</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.test.app.LoginTest" class="method navigator-link" hash-for-method="testName">testName</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.test.app.RegisterTest" class="method navigator-link" hash-for-method="testName">testName</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.test.app.RegisterTest" class="method navigator-link" hash-for-method="testNumber">testNumber</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -119,6 +124,16 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Surefire_suite" title="com.test.app.LoginTest" class="method navigator-link" hash-for-method="testTitle">testTitle</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.test.app.RegisterTest" class="method navigator-link" hash-for-method="testdate">testdate</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.test.app.RegisterTest" class="method navigator-link" hash-for-method="testmail">testmail</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Surefire_suite -->
@@ -139,13 +154,6 @@
               <span class="class-name">com.test.app.LoginTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="loginSuccess">
-                  </a> <!-- loginSuccess -->
-                  <span class="method-name">loginSuccess</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="testName">
@@ -169,6 +177,42 @@
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Surefire_suite-class-passed -->
+          <div class="suite-Surefire_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.test.app.RegisterTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testName">
+                  </a> <!-- testName -->
+                  <span class="method-name">testName</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testNumber">
+                  </a> <!-- testNumber -->
+                  <span class="method-name">testNumber</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testdate">
+                  </a> <!-- testdate -->
+                  <span class="method-name">testdate</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testmail">
+                  </a> <!-- testmail -->
+                  <span class="method-name">testmail</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-passed -->
         </div> <!-- panel Surefire_suite -->
         <div panel-name="test-xml-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -181,6 +225,7 @@
   &lt;test thread-count=&quot;5&quot; name=&quot;Surefire test&quot; verbose=&quot;0&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.test.app.LoginTest&quot;/&gt;
+      &lt;class name=&quot;com.test.app.RegisterTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Surefire test --&gt;
 &lt;/suite&gt; &lt;!-- Surefire suite --&gt;
@@ -194,7 +239,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Surefire test (1 class)</span>
+                <span class="test-name">Surefire test (2 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -220,23 +265,35 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(4);
+data.addRows(7);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'loginSuccess')
+data.setCell(0, 1, 'testName')
 data.setCell(0, 2, 'com.test.app.LoginTest')
-data.setCell(0, 3, 979);
+data.setCell(0, 3, 569);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'testName')
-data.setCell(1, 2, 'com.test.app.LoginTest')
-data.setCell(1, 3, 223);
+data.setCell(1, 2, 'com.test.app.RegisterTest')
+data.setCell(1, 3, 517);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'testPassword')
-data.setCell(2, 2, 'com.test.app.LoginTest')
-data.setCell(2, 3, 117);
+data.setCell(2, 1, 'testNumber')
+data.setCell(2, 2, 'com.test.app.RegisterTest')
+data.setCell(2, 3, 312);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'testTitle')
-data.setCell(3, 2, 'com.test.app.LoginTest')
-data.setCell(3, 3, 77);
+data.setCell(3, 1, 'testdate')
+data.setCell(3, 2, 'com.test.app.RegisterTest')
+data.setCell(3, 3, 138);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'testPassword')
+data.setCell(4, 2, 'com.test.app.LoginTest')
+data.setCell(4, 3, 130);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'testmail')
+data.setCell(5, 2, 'com.test.app.RegisterTest')
+data.setCell(5, 3, 106);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'testTitle')
+data.setCell(6, 2, 'com.test.app.LoginTest')
+data.setCell(6, 3, 64);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
@@ -273,20 +330,39 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">loginSuccess</span>
-                <span class="method-start">5362 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
                 <span class="method-name">testName</span>
-                <span class="method-start">6347 ms</span>
+                <span class="method-start">3013 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testPassword</span>
-                <span class="method-start">6573 ms</span>
+                <span class="method-start">3591 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testTitle</span>
-                <span class="method-start">6692 ms</span>
+                <span class="method-start">3722 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.test.app.RegisterTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">setup</span>
+                <span class="method-start">3793 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <span class="method-name">testName</span>
+                <span class="method-start">5287 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testNumber</span>
+                <span class="method-start">5811 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testdate</span>
+                <span class="method-start">6126 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testmail</span>
+                <span class="method-start">6266 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
