@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Student{
 
     private int roll_no;  //Data Members
@@ -92,6 +94,25 @@ class Student{
 
         String stuName=student3.getName();
         System.out.println(stuName);
+
+        Scanner input=new Scanner(System.in);
+
+        
+        System.out.println("Enter the roll no :");
+        int rollno=input.nextInt();
+
+        input.nextLine();
+        System.out.println("Enter the Name : ");
+        String stuname=input.nextLine();
+
+        System.out.println("Enter the result : ");
+        float res=input.nextFloat();
+
+        System.out.println("Enter the standard : ");
+        int std=input.nextInt();
+
+        Student student4=new Student(rollno,stuname,res,std);
+        System.out.println(student4);
     }
 }
 
