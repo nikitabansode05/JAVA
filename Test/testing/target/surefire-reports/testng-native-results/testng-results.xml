@@ -1,47 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-19T12:35:14 IST" name="Surefire suite" finished-at="2025-09-19T12:35:21 IST" duration-ms="6403">
+  <suite started-at="2025-09-19T17:36:21 IST" name="Surefire suite" finished-at="2025-09-19T17:36:38 IST" duration-ms="17049">
     <groups>
     </groups>
-    <test started-at="2025-09-19T12:35:14 IST" name="Surefire test" finished-at="2025-09-19T12:35:21 IST" duration-ms="6403">
+    <test started-at="2025-09-19T17:36:21 IST" name="Surefire test" finished-at="2025-09-19T17:36:38 IST" duration-ms="17049">
       <class name="com.test.app.RegisterTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.test.app.RegisterTest@10db82ae]" started-at="2025-09-19T12:35:18 IST" name="setup" finished-at="2025-09-19T12:35:20 IST" duration-ms="1475" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.test.app.RegisterTest@290d210d]" started-at="2025-09-19T17:36:32 IST" name="setup" finished-at="2025-09-19T17:36:33 IST" duration-ms="1730" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testName()[pri:0, instance:com.test.app.RegisterTest@10db82ae]" started-at="2025-09-19T12:35:20 IST" name="testName" finished-at="2025-09-19T12:35:20 IST" duration-ms="517" status="PASS">
+        <test-method signature="testName()[pri:0, instance:com.test.app.RegisterTest@290d210d]" started-at="2025-09-19T17:36:33 IST" name="testName" finished-at="2025-09-19T17:36:38 IST" duration-ms="5005" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testName -->
-        <test-method signature="testNumber()[pri:0, instance:com.test.app.RegisterTest@10db82ae]" started-at="2025-09-19T12:35:20 IST" name="testNumber" finished-at="2025-09-19T12:35:21 IST" duration-ms="312" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testNumber -->
-        <test-method signature="testdate()[pri:0, instance:com.test.app.RegisterTest@10db82ae]" started-at="2025-09-19T12:35:21 IST" name="testdate" finished-at="2025-09-19T12:35:21 IST" duration-ms="138" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testdate -->
-        <test-method signature="testmail()[pri:0, instance:com.test.app.RegisterTest@10db82ae]" started-at="2025-09-19T12:35:21 IST" name="testmail" finished-at="2025-09-19T12:35:21 IST" duration-ms="106" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testmail -->
       </class> <!-- com.test.app.RegisterTest -->
       <class name="com.test.app.LoginTest">
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.test.app.LoginTest@7ea37dbf]" started-at="2025-09-19T12:35:14 IST" name="beforeMethod" finished-at="2025-09-19T12:35:17 IST" duration-ms="2989" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-19T17:36:21 IST" name="beforeMethod" finished-at="2025-09-19T17:36:29 IST" duration-ms="8047" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="testName()[pri:0, instance:com.test.app.LoginTest@7ea37dbf]" started-at="2025-09-19T12:35:17 IST" name="testName" finished-at="2025-09-19T12:35:18 IST" duration-ms="569" status="PASS">
+        <test-method signature="testName()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-19T17:36:29 IST" name="testName" finished-at="2025-09-19T17:36:31 IST" duration-ms="1917" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testName -->
-        <test-method signature="testPassword()[pri:0, instance:com.test.app.LoginTest@7ea37dbf]" started-at="2025-09-19T12:35:18 IST" name="testPassword" finished-at="2025-09-19T12:35:18 IST" duration-ms="130" status="PASS">
+        <test-method signature="testPassword()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-19T17:36:31 IST" name="testPassword" finished-at="2025-09-19T17:36:31 IST" duration-ms="119" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPassword -->
-        <test-method signature="testTitle()[pri:0, instance:com.test.app.LoginTest@7ea37dbf]" started-at="2025-09-19T12:35:18 IST" name="testTitle" finished-at="2025-09-19T12:35:18 IST" duration-ms="64" status="PASS">
+        <test-method signature="testTitle()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-19T17:36:31 IST" name="testTitle" finished-at="2025-09-19T17:36:32 IST" duration-ms="82" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testTitle -->

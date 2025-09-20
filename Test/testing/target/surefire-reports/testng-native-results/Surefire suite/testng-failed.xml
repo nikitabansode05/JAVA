@@ -3,12 +3,14 @@
 <suite name="Failed suite [Surefire suite]" verbose="0">
   <test thread-count="5" name="Surefire test(failed)" verbose="0">
     <classes>
-      <class name="com.test.app.RegisterTest">
+      <class name="com.test.app.LoginTest">
         <methods>
-          <include name="setup"/>
-          <include name="testdate"/>
+          <include name="testTitle"/>
+          <include name="testName"/>
+          <include name="testPassword"/>
+          <include name="beforeMethod"/>
         </methods>
-      </class> <!-- com.test.app.RegisterTest -->
+      </class> <!-- com.test.app.LoginTest -->
     </classes>
   </test> <!-- Surefire test(failed) -->
 </suite> <!-- Failed suite [Surefire suite] -->
