@@ -16,7 +16,7 @@ public class FileIO {
         }
     }
 
-    public static QuestionBank Deserialize(String jsonString){
+    public static QuestionBank Deserialize(){
         try {
             return mapper.readValue(new File("QuestionBank.json"), QuestionBank.class);
         } catch (Exception e) {
