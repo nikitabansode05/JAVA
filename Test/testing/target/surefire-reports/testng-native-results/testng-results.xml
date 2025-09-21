@@ -2,34 +2,34 @@
 <testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-19T17:36:21 IST" name="Surefire suite" finished-at="2025-09-19T17:36:38 IST" duration-ms="17049">
+  <suite started-at="2025-09-21T15:23:00 IST" name="Surefire suite" finished-at="2025-09-21T15:23:12 IST" duration-ms="12955">
     <groups>
     </groups>
-    <test started-at="2025-09-19T17:36:21 IST" name="Surefire test" finished-at="2025-09-19T17:36:38 IST" duration-ms="17049">
+    <test started-at="2025-09-21T15:23:00 IST" name="Surefire test" finished-at="2025-09-21T15:23:12 IST" duration-ms="12955">
       <class name="com.test.app.RegisterTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.test.app.RegisterTest@290d210d]" started-at="2025-09-19T17:36:32 IST" name="setup" finished-at="2025-09-19T17:36:33 IST" duration-ms="1730" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.test.app.RegisterTest@290d210d]" started-at="2025-09-21T15:23:05 IST" name="setup" finished-at="2025-09-21T15:23:07 IST" duration-ms="1783" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testName()[pri:0, instance:com.test.app.RegisterTest@290d210d]" started-at="2025-09-19T17:36:33 IST" name="testName" finished-at="2025-09-19T17:36:38 IST" duration-ms="5005" status="PASS">
+        <test-method signature="testName()[pri:0, instance:com.test.app.RegisterTest@290d210d]" started-at="2025-09-21T15:23:07 IST" name="testName" finished-at="2025-09-21T15:23:12 IST" duration-ms="5471" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testName -->
       </class> <!-- com.test.app.RegisterTest -->
       <class name="com.test.app.LoginTest">
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-19T17:36:21 IST" name="beforeMethod" finished-at="2025-09-19T17:36:29 IST" duration-ms="8047" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-21T15:23:00 IST" name="beforeMethod" finished-at="2025-09-21T15:23:04 IST" duration-ms="4820" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="testName()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-19T17:36:29 IST" name="testName" finished-at="2025-09-19T17:36:31 IST" duration-ms="1917" status="PASS">
+        <test-method signature="testName()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-21T15:23:04 IST" name="testName" finished-at="2025-09-21T15:23:05 IST" duration-ms="482" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testName -->
-        <test-method signature="testPassword()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-19T17:36:31 IST" name="testPassword" finished-at="2025-09-19T17:36:31 IST" duration-ms="119" status="PASS">
+        <test-method signature="testPassword()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-21T15:23:05 IST" name="testPassword" finished-at="2025-09-21T15:23:05 IST" duration-ms="142" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPassword -->
-        <test-method signature="testTitle()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-19T17:36:31 IST" name="testTitle" finished-at="2025-09-19T17:36:32 IST" duration-ms="82" status="PASS">
+        <test-method signature="testTitle()[pri:0, instance:com.test.app.LoginTest@7ff95560]" started-at="2025-09-21T15:23:05 IST" name="testTitle" finished-at="2025-09-21T15:23:05 IST" duration-ms="115" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testTitle -->

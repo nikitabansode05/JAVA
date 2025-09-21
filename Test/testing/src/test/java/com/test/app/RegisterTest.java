@@ -1,9 +1,13 @@
 package com.test.app;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -31,18 +35,22 @@ public class RegisterTest {
             Thread.sleep(3000);
             Assert.assertEquals("Nikita Bansode",name.getAttribute("value"));
             WebElement mail=driver.findElement(By.name("mail"));
-            mail.sendKeys("nikita123@gmail,com");
+            mail.sendKeys("nikita123@gmail.com");
             WebElement number=driver.findElement(By.id("num"));
             number.sendKeys("9087654321");
             WebElement date=driver.findElement(By.id("dob"));
             date.sendKeys("05-10-2005");
             WebElement pass=driver.findElement(By.id("pass"));
             pass.sendKeys("password");
-            // WebElement button1=driver.findElement(By.id("course1"));
-            // button1.click();
+            WebElement button1=driver.findElement(By.id("course1"));
+            button1.click();
             WebElement submit=driver.findElement(By.id("submit"));
             System.out.println("Pre Submit button");
             submit.click();
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.urlContains("welcome.html"));
+
         }catch(Exception e){
             e.printStackTrace();
         }
