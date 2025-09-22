@@ -16,7 +16,7 @@ public class ListDemo{
     }
    
     public static void main(String[]args){
-        List<String> nameList= new ArrayList();
+        List<String> nameList= new ArrayList<String>();
         nameList.add("Samruddhi");
         nameList.add("Sai");
         nameList.add("Chaitrali");

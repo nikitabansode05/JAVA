@@ -9,6 +9,10 @@ class Animal{
         habitat="land";
     }
 
+    public Animal(String message){
+        System.out.println(message);
+    }
+
     public Animal(int legs,String type,String habitat){
         this.legs=legs;
         this.type=type;
@@ -47,6 +51,11 @@ class Animal{
 
 
 class Dog extends Animal{
+
+    // Dog(){
+    //     super(4,"gy","uh");
+    // }
+
     public void walk(){
         System.out.println("Dog walks on 4 leg");
     }
