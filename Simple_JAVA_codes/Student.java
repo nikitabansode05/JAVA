@@ -113,6 +113,17 @@ class Student{
 
         Student student4=new Student(rollno,stuname,res,std);
         System.out.println(student4);
+
+        List<Student> students =new ArrayList();
+
+        students.add(student1);
+        students.add(student2);
+        students.add(student3);
+       // students.add(student4);
+
+        for(Student s: students){
+            System.out.println(s);
+        }
     }
 }
 
