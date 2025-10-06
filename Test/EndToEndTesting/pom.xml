@@ -41,11 +41,11 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
@@ -97,6 +97,7 @@
 						<include>**/*Test.java</include>
 						<include>**/*Tests.java</include>
 						<include>**/*TestNG.java</include>
+						<include>**/*Testing.java</include>
 					</includes>
 					<useSystemClassLoader>true</useSystemClassLoader>
 					<suiteXmlFiles>
@@ -105,6 +106,7 @@
 				</configuration>
 						
             </plugin>
+
 		</plugins>
 	</build>
 
