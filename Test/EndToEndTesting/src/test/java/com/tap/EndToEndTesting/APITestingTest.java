@@ -6,6 +6,8 @@ import static org.hamcrest.Matchers.*;
 
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.when;
+
 import io.restassured.http.ContentType;
 
 
@@ -33,25 +35,47 @@ public class APITestingTest {
     }
 
 
-    @Test
-    public void createProduct(){
-        RestAssured.baseURI="http://localhost:2005";
-        String newProductJSON="""
-                {
-                    "id":4,
-                    "name":"Asus", 
-                    "price":70000   
-                }
-                """;
+    // @Test
+    // public void createProduct(){
+    //     RestAssured.baseURI="http://localhost:2005";
+    //     String newProductJSON="""
+    //             {
+    //                 "id":4,
+    //                 "name":"Asus", 
+    //                 "price":70000   
+    //             }
+    //             """;
 
+    //     given()
+    //     .contentType(ContentType.JSON)
+    //     .body(newProductJSON)
+    //     .when()
+    //     .post("api/products")
+    //     .then()
+    //     .body("name" ,notNullValue())
+    //     .body("id",notNullValue())
+    //     .body("price",greaterThan(15000.0F));
+    // }
+
+    @Test
+    public void updateProduct(){
+        RestAssured.baseURI="http://localhost:2005";
+        String updateProduct="""
+        {
+                "id":2,
+                "name":"lenovo",
+                "price":21000
+        }
+                """;
         given()
-        .contentType(ContentType.JSON)
-        .body(newProductJSON)
+            .contentType(ContentType.JSON)
+            .body(updateProduct)
         .when()
-        .post("api/products")
+            .put("/api/products/2")
         .then()
-        .body("name" ,notNullValue())
-        .body("id",notNullValue())
-        .body("price",greaterThan(15000.0F));
+            .statusCode(200)
+            .body("id",notNullValue())
+            .body("name", equalTo("lenovo"))
+            .body("price",equalTo(21000.0F));
     }
 }
