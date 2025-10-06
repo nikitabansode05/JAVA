@@ -35,27 +35,27 @@ public class APITestingTest {
     }
 
 
-    // @Test
-    // public void createProduct(){
-    //     RestAssured.baseURI="http://localhost:2005";
-    //     String newProductJSON="""
-    //             {
-    //                 "id":4,
-    //                 "name":"Asus", 
-    //                 "price":70000   
-    //             }
-    //             """;
+    @Test
+    public void createProduct(){
+        RestAssured.baseURI="http://localhost:2005";
+        String newProductJSON="""
+                {
+                    "id":4,
+                    "name":"Asus", 
+                    "price":70000   
+                }
+                """;
 
-    //     given()
-    //     .contentType(ContentType.JSON)
-    //     .body(newProductJSON)
-    //     .when()
-    //     .post("api/products")
-    //     .then()
-    //     .body("name" ,notNullValue())
-    //     .body("id",notNullValue())
-    //     .body("price",greaterThan(15000.0F));
-    // }
+        given()
+        .contentType(ContentType.JSON)
+        .body(newProductJSON)
+        .when()
+        .post("api/products")
+        .then()
+        .body("name" ,notNullValue())
+        .body("id",notNullValue())
+        .body("price",greaterThan(15000.0F));
+    }
 
     @Test
     public void updateProduct(){
@@ -77,5 +77,15 @@ public class APITestingTest {
             .body("id",notNullValue())
             .body("name", equalTo("lenovo"))
             .body("price",equalTo(21000.0F));
+    }
+
+    @Test
+    public void deleteProduct(){
+        RestAssured.baseURI="http://localhost:2005";
+        given()
+        .when()
+            .delete("/api/products/4")
+        .then()
+            .statusCode(200);
     }
 }
