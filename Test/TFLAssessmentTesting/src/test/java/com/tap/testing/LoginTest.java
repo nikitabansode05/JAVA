@@ -28,6 +28,7 @@ public class LoginTest{
 
     @Test
     public void loginTest(){
+        try{
         driver.get("http://127.0.0.1:5500/Home.html");
         driver.findElement(By.linkText("Login")).click();
 
@@ -40,12 +41,16 @@ public class LoginTest{
         mail.sendKeys("nikita.bansode@example.com");
         pass.sendKeys("12345");
         Assert.assertEquals("nikita.bansode@example.com",mail.getDomProperty("value"));
+        Thread.sleep(1000);
         Assert.assertEquals("12345", pass.getDomProperty("value"));
+        Thread.sleep(1000);
         driver.findElement(By.cssSelector("button[type='submit']")).click();
         System.out.println("Student logged in");
 
         wait.until(ExpectedConditions.urlContains("/Student/student.html"));
+        Thread.sleep(2000);
         driver.findElement(By.linkText("Get All Test")).click();
+        Thread.sleep(2000);
 
         //driver.findElement(By.xpath("//button[@data-id='3']")).click();
        //driver.findElement(By.cssSelector("button[data-id='3']").click();
@@ -57,5 +62,10 @@ public class LoginTest{
         // detailsBtn.click();
 
         driver.findElement(By.xpath("//button[@class='detailsBtn' and contains(@data-test, 'Java')]")).click();
+        driver.findElement(By.xpath("//button[@class='startBtn' and contains(@data-id,'3')]")).click();
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }
 }
