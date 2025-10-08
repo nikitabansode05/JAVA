@@ -1,8 +1,10 @@
 package com.tap.testing;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -64,14 +66,32 @@ public class SMETest extends BaseTest{
 
         WebElement date = driver.findElement(By.id("scheduledDate"));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("scheduledDate")));
-        date.sendKeys("2025-10-08T11:05:00");
+        ((JavascriptExecutor) driver).executeScript("arguments[0].value = '2025-10-08T11:00';" +
+                                                    "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));" +
+                                                    "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));",date);
+        // date.clear();
+        // date.sendKeys("08-10-2025 T 11:05:00");
 
         WebElement passingLevel = driver.findElement(By.id("passingLevel"));
         passingLevel.sendKeys("5");
+        
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("questionsList")));
+        WebElement questions = driver.findElement(By.id("questionsList"));
+        List<WebElement> checkboxes = questions.findElements(By.tagName("input"));
 
-        
-      // WebElement 
-        
+        for(WebElement question: checkboxes){
+            question.click();
+        }
+        Thread.sleep(1000);
+        WebElement submitButton = driver.findElement(By.id("submitBtn"));
+        submitButton.click();
+        Thread.sleep(1000);
+
+        wait.until(ExpectedConditions.urlContains("SME/reviewtest.html"));
+        WebElement confirmButton = driver.findElement(By.id("confirmBtn"));
+        confirmButton.click();
+
+
         }catch(Exception e){
             System.out.println(e);
         }
