@@ -46,6 +46,28 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Cucumber + JUnit 5 -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>7.15.0</version>
+    <scope>test</scope>
+</dependency>
+
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-junit-platform-engine</artifactId>
+    <version>7.15.0</version>
+    <scope>test</scope>
+</dependency>
+
+<!-- Spring Boot Test -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
 	</dependencies>
 
 	<build>
