@@ -1,11 +1,11 @@
 package com.transflower.statuscodeplayground.stepdefs;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;

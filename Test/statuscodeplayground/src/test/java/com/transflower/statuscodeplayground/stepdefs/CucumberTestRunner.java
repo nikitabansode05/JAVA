@@ -1,21 +1,13 @@
-// package com.transflower.statuscodeplayground.stepdefs;
-
-// import io.cucumber.junit.platform.engine.Cucumber;
-
-// @Cucumber
-// public class CucumberTestRunner {
-// }
-
 package com.transflower.statuscodeplayground.stepdefs;
 
-import org.junit.platform.suite.api.ConfigurationParameter;
-import org.junit.platform.suite.api.SelectClasspathResource;
-import org.junit.platform.suite.api.Suite;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
 
-import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
-
-@Suite
-@SelectClasspathResource("features")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.transflower.statuscodeplayground.stepdefs")
-public class CucumberTestRunner {
+@CucumberOptions(
+    features = "src/test/resources/features",
+    glue = "com.transflower.statuscodeplayground.stepdefs",
+    plugin = {"pretty", "html:target/cucumber-reports.html"},
+    monochrome = true
+)
+public class CucumberTestRunner extends AbstractTestNGCucumberTests {
 }
