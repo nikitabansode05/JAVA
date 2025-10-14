@@ -19,4 +19,4 @@ Feature: HTTP Status Code Playground
   Scenario: Verify 500 Internal Server Error
     When I send GET request to "/api/status/servererror"
     Then the response status should be 500
-    And the response should contain "Simulated"
+    And the response should contain "/ by zero"
