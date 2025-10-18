@@ -24,7 +24,8 @@ public class AdminTest extends BaseTest{
         email.sendKeys("ravi.tambade@example.com");
         password.sendKeys("12345");
         driver.findElement(By.cssSelector("button[type='submit']")).click();
-        wait.until(ExpectedConditions.urlContains("Admin/admin.html"));
+
+        wait.until(ExpectedConditions.urlContains("http://127.0.0.1:5500/Admin/admin.html"));
 
         WebElement assignTest= driver.findElement(By.id("showTestBtw"));
         assignTest.click();
@@ -51,7 +52,7 @@ public class AdminTest extends BaseTest{
         Select selectStatus = new Select(statusDropdown);
         selectStatus.selectByVisibleText("Scheduled");
 
-        driver.findElement(By.id("changeStatus")).click();
+        //driver.findElement(By.id("changeStatus")).click();
     
         WebElement scheduledStart = driver.findElement(By.id("scheduledStart"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].value='2025-10-08T11:00:00';"+
@@ -63,6 +64,14 @@ public class AdminTest extends BaseTest{
         ((JavascriptExecutor) driver).executeScript("arguments[0].value='2025-10-09T12:00:00';"+
                                                     "arguments[0].dispatchEvent(new Event('input',{bubbles:true}));"+
                                                     "arguments[0].dispatchEvent(new Event('change',{bubbles:true}))", scheduledEnd);
+
+        WebElement remarks=driver.findElement(By.id("remarks"));
+        remarks.sendKeys("All The Best for Your Test");
+
+        driver.findElement(By.id("getStudents")).click();
+        WebElement selectStudent=driver.findElement(By.xpath("//input[@class='emp-checkbox' and @value='7']"));
+        selectStudent.click();
+        driver.findElement(By.id("addStudent")).click();
  }
 
 
