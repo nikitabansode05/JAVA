@@ -69,6 +69,8 @@ public class AdminTest extends BaseTest{
         remarks.sendKeys("All The Best for Your Test");
 
         driver.findElement(By.id("getStudents")).click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='emp-checkbox' and @value='7']")));
         WebElement selectStudent=driver.findElement(By.xpath("//input[@class='emp-checkbox' and @value='7']"));
         selectStudent.click();
         driver.findElement(By.id("addStudent")).click();
