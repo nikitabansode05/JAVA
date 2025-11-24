@@ -40,19 +40,22 @@ public class AuthControllerTest {
         String registerUser="""
                    
                 {
-                "aadharId":"123412341234",
-                "firstname":"Ariana",
-                "lastname":"Grande",
-                "email":"ariana.grande@gmail.com",
-                "contactnumber":"9087654321",
-                "password":12345,       
-                }
+                "aadharId":"989876765454",
+                "firstname":"ui",
+                "lastname":"ux",
+                "email":"ui.ux@gmail.com",
+                "contactNumber":"8907654321",
+                "password":"12345"
+}
                 """;
         given()
             .contentType(ContentType.JSON)
             .body(registerUser)
         .when()
             .post("api/auth/register")
-        .then();
+        .then()
+            .statusCode(200)
+            .body("message",equalTo("User registered successfully!"))
+            .log().all(); 
     }
 }
