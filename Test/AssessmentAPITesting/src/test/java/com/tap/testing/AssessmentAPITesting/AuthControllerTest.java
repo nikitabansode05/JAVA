@@ -1,12 +1,11 @@
 package com.tap.testing.AssessmentAPITesting;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+
 import static org.hamcrest.CoreMatchers.*;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
 import io.restassured.http.ContentType;
 
 public class AuthControllerTest {
@@ -36,10 +35,24 @@ public class AuthControllerTest {
         .body("user.userRoles[0].role.name",equalTo("student"));
     }
 
-    // @Test
-    // public void registerTest(){
-    //     given()
-    //     .when()
-    //     .then()
-    // }
+    @Test
+    public void registerTest(){
+        String registerUser="""
+                   
+                {
+                "aadharId":"123412341234",
+                "firstname":"Ariana",
+                "lastname":"Grande",
+                "email":"ariana.grande@gmail.com",
+                "contactnumber":"9087654321",
+                "password":12345,       
+                }
+                """;
+        given()
+            .contentType(ContentType.JSON)
+            .body(registerUser)
+        .when()
+            .post("api/auth/register")
+        .then();
+    }
 }
