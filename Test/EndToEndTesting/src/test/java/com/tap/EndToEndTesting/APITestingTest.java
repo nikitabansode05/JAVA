@@ -17,11 +17,12 @@ public class APITestingTest {
         RestAssured.baseURI="http://localhost:2005";
 
         given()
-        .when().get("/api/products")
+        .when()
+            .get("/api/products")
         .then()
-        .statusCode(200)
-        .body("size()", greaterThan(0))
-        .body("[0].name", notNullValue());
+            .statusCode(200)
+            .body("size()", greaterThan(0))
+            .body("[0].name", notNullValue());
     }
 
     @Test
@@ -29,9 +30,9 @@ public class APITestingTest {
         RestAssured.baseURI="http://localhost:2005";
         given()
         .when()
-        .get("/api/products/1")
+            .get("/api/products/1")
         .then()
-        .statusCode(200);
+            .statusCode(200);
     }
 
 
@@ -47,14 +48,14 @@ public class APITestingTest {
                 """;
 
         given()
-        .contentType(ContentType.JSON)
-        .body(newProductJSON)
+            .contentType(ContentType.JSON)
+            .body(newProductJSON)
         .when()
-        .post("api/products")
+            .post("api/products")
         .then()
-        .body("name" ,notNullValue())
-        .body("id",notNullValue())
-        .body("price",greaterThan(15000.0F));
+            .body("name" ,notNullValue())
+            .body("id",notNullValue())
+            .body("price",greaterThan(15000.0F));
     }
 
     @Test
