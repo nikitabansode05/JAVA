@@ -44,28 +44,10 @@ public class AuthControllerTest {
             e.printStackTrace();
         }
 
-            System.out.println("Size of loginOutput = " + loginOutput.size());
-            for (int i = 0; i < loginOutput.size(); i++) {
-                System.out.println("Index " + i + ": " + loginOutput.get(i).getEmail());
-}
-
             for(int i=0;i<=userList.size()-1;i++) {
 
                 User u=userList.get(i);
                 ExpectedOutput eo=loginOutput.get(i);
-
-                // System.out.println("EO firstname = " + eo.getFirstname());
-                // System.out.println("EO lastname = " + eo.getLastname());
-                // System.out.println("EO role = " + eo.getRole());
-                // System.out.println("EO id = " + eo.getId());
-
-                // System.out.println("***************************************************************************************");
-                // System.out.println(u.getEmail()+ " " + u.getPassword());
-
-
-                   // System.out.println("***************************************************************************************");
-                    // System.out.println(eo.getEmail()+ " " + eo.getRole());
-                    // System.out.println("***************************************************************************************");
 
                     String loginCredentials = """
                         {
@@ -74,24 +56,40 @@ public class AuthControllerTest {
                         }
                         """.formatted(u.getEmail(), u.getPassword());
 
-                    //System.out.println(loginCredentials);
+            System.out.println(eo.getUserRoles());
+                        
+            if (eo.getUserRoles() != null && !eo.getUserRoles().isEmpty()) {
+                given()
+                    .contentType(ContentType.JSON)
+                    .body(loginCredentials)
+                .when()
+                    .post("api/auth/login")
+                .then()
+                    .statusCode(200)
+                    .body("user.email", equalTo(eo.getEmail()))
+                    .body("user.firstname", equalTo(eo.getFirstname()))
+                    .body("user.lastname", equalTo(eo.getLastname()))
+                    .body("user.id", equalTo(eo.getId()))
+                    .body("user.userRoles[0].role.name", equalTo(eo.getUserRoles().get(0).getRole().getName()));
 
-            given()
-                .contentType(ContentType.JSON)
-                .body(loginCredentials)
-            .when()
-                .post("api/auth/login")
-            .then()
-            .statusCode(200)
-            .body("user.email",equalTo(eo.getEmail()))
-            .body("user.firstname",equalTo(eo.getFirstname()))
-            .body("user.lastname",equalTo(eo.getLastname()))
-            .body("user.id",equalTo(eo.getId()));
-            //.body("user.userRoles[0].role.name",equalTo(eo.getRole()));
+                } else {
+
+                    // User has NO roles → assert that list is empty
+                    given()
+                        .contentType(ContentType.JSON)
+                        .body(loginCredentials)
+                    .when()
+                        .post("api/auth/login")
+                    .then()
+                        .statusCode(200)
+                        .body("user.email", equalTo(eo.getEmail()))
+                        .body("user.firstname", equalTo(eo.getFirstname()))
+                        .body("user.lastname", equalTo(eo.getLastname()))
+                        .body("user.id", equalTo(eo.getId()))
+                        .body("user.userRoles.size()", equalTo(0));   // IMPORTANT
+                }
+
             }
-            
-        
-    
     }
 
     

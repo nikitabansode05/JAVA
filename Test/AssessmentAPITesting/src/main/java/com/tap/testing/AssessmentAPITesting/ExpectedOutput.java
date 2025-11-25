@@ -11,8 +11,6 @@ public class ExpectedOutput {
     private String contactNumber;
     private String password;
     private List<UserRoles> userRoles;
-    private Role role;
-
 
     public ExpectedOutput() {
         id=0;
@@ -23,7 +21,6 @@ public class ExpectedOutput {
         contactNumber=null;
         password=null;
         userRoles=null;
-        role=null;
     }
 
     // Getter & Setter for id
@@ -98,12 +95,4 @@ public class ExpectedOutput {
         this.userRoles = userRole;
     }
 
-    // Getter & Setter for role
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 }
