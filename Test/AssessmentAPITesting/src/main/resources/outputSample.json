@@ -1,0 +1,229 @@
+[
+    {
+        "id": 1,
+        "aadharId": null,
+        "firstname": "ravi",
+        "lastname": "tambade",
+        "email": "ravi.tambade@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": [
+            {
+                "id": 1,
+                "userId": 1,
+                "roleId": 1,
+                "role": {
+                    "id": 1,
+                    "name": "admin",
+                    "lob": "HR"
+                }
+            }
+        ]
+    },
+    {
+      "id": 2,
+        "aadharId": null,
+        "firstname": "kajal",
+        "lastname": "ghule",
+        "email": "kajal.ghule@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": [
+            {
+                "id": 2,
+                "userId": 2,
+                "roleId": 1,
+                "role": {
+                    "id": 1,
+                    "name": "admin",
+                    "lob": "HR"
+                }
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "aadharId": null,
+        "firstname": "nirjala",
+        "lastname": "naik",
+        "email": "nirjala.naik@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": [
+            {
+                "id": 3,
+                "userId": 3,
+                "roleId": 2,
+                "role": {
+                    "id": 2,
+                    "name": "sme",
+                    "lob": "Technical"
+                }
+            },
+            {
+                "id": 8,
+                "userId": 3,
+                "roleId": 3,
+                "role": {
+                    "id": 3,
+                    "name": "student",
+                    "lob": "Assessment"
+                }
+            }
+    ]
+    },
+    {
+        "id": 4,
+        "aadharId": null,
+        "firstname": "sahil",
+        "lastname": "kamble",
+        "email": "sahil.kamble@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": [
+            {
+                "id": 4,
+                "userId": 4,
+                "roleId": 3,
+                "role": {
+                    "id": 3,
+                    "name": "student",
+                    "lob": "Assessment"
+                }
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "aadharId": null,
+        "firstname": "sanika",
+        "lastname": "bhor",
+        "email": "sanika.bhor@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": [
+            {
+                "id": 5,
+                "userId": 5,
+                "roleId": 2,
+                "role": {
+                    "id": 2,
+                    "name": "sme",
+                    "lob": "Technical"
+                }
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "aadharId": null,
+        "firstname": "sumit",
+        "lastname": "bhor",
+        "email": "sumit.bhor@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": [
+            {
+                "id": 6,
+                "userId": 6,
+                "roleId": 3,
+                "role": {
+                    "id": 3,
+                    "name": "student",
+                    "lob": "Assessment"
+                }
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "aadharId": null,
+        "firstname": "nikita",
+        "lastname": "bansode",
+        "email": "nikita.bansode@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": [
+            {
+                "id": 7,
+                "userId": 7,
+                "roleId": 3,
+                "role": {
+                    "id": 3,
+                    "name": "student",
+                    "lob": "Assessment"
+                }
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "aadharId": null,
+        "firstname": "pranita",
+        "lastname": "mane",
+        "email": "pranita.mane@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": []
+    },
+    {
+        "id": 9,
+        "aadharId": null,
+        "firstname": "rutuja",
+        "lastname": "mokale",
+        "email": "rutuja.mokale@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": []
+    },
+    {
+        "id": 10,
+        "aadharId": null,
+        "firstname": "pankaj",
+        "lastname": "bhor",
+        "email": "pankaj.bhor@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": []
+    },
+    {
+        "id": 11,
+        "aadharId": null,
+        "firstname": "sarthak",
+        "lastname": "walake",
+        "email": "sarthak.walake@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": []
+    },
+    {
+        "id": 12,
+        "aadharId": null,
+        "firstname": "naina",
+        "lastname": "surve",
+        "email": "naina.surve@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": []
+    },
+    {
+        "id": 13,
+        "aadharId": null,
+        "firstname": "nikhil",
+        "lastname": "navale",
+        "email": "nikhil.navale@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": []
+    },
+    {
+        "id": 14,
+        "aadharId": null,
+        "firstname": "sarthak",
+        "lastname": "kadam",
+        "email": "sarthak.kadam@example.com",
+        "contactNumber": null,
+        "password": null,
+        "userRoles": []
+    }
+]
