@@ -92,16 +92,16 @@ public class AuthControllerTest {
             }
     }
 
-    
+    @Test
     public void registerTest(){
         String registerUser="""
                    
                 {
-                "aadharId":"989876765454",
-                "firstname":"ui",
-                "lastname":"ux",
-                "email":"ui.ux@gmail.com",
-                "contactNumber":"8907654321",
+                "aadharId":"989876897654",
+                "firstname":"ni",
+                "lastname":"kl",
+                "email":"ni.kl@gmail.com",
+                "contactNumber":"8927654321",
                 "password":"12345"
             }
                 """;
