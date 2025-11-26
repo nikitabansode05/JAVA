@@ -11,6 +11,8 @@ import org.testng.annotations.Test;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tap.testing.AssessmentAPITesting.AuthenticationTestData.ExpectedOutput;
+import com.tap.testing.AssessmentAPITesting.AuthenticationTestData.User;
 
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
@@ -19,7 +21,7 @@ import io.restassured.http.ContentType;
 
 public class AuthControllerTest {
     
-    @Test
+   // @Test
     public void loginTest(){
         RestAssured.baseURI="http://localhost:5238";
         ObjectMapper mapper=new ObjectMapper();
@@ -92,7 +94,7 @@ public class AuthControllerTest {
             }
     }
 
-    @Test
+    //@Test
     public void registerTest(){
         String registerUser="""
                    

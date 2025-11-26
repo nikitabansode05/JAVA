@@ -1,4 +1,4 @@
-package com.tap.testing.AssessmentAPITesting;
+package com.tap.testing.AssessmentAPITesting.AuthenticationTestData;
 
 public class UserRoles {
     private int id;

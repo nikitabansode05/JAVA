@@ -1,4 +1,4 @@
-package com.tap.testing.AssessmentAPITesting;
+package com.tap.testing.AssessmentAPITesting.AuthenticationTestData;
 
 public class User {
     private String email;
