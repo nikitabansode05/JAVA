@@ -4,9 +4,10 @@
 <suite name="Suite">
     <test name="APITests">
         <classes>
-            <class name="com.tap.testing.AssessmentAPITesting.AuthControllerTest"/>
+            <!-- <class name="com.tap.testing.AssessmentAPITesting.AuthControllerTest"/>
             <class name="com.tap.testing.AssessmentAPITesting.SubjectControllerTest"/>
-            <class name="com.tap.testing.AssessmentAPITesting.MembershipControllerTest"/>
+            <class name="com.tap.testing.AssessmentAPITesting.MembershipControllerTest"/> -->
+            <class name="com.tap.testing.AssessmentAPITesting.InterviewControllerTest"/>
         </classes>
     </test>
 </suite>

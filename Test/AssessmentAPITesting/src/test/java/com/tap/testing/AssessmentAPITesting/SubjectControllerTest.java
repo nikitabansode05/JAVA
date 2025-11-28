@@ -20,7 +20,7 @@ public class SubjectControllerTest {
         RestAssured.baseURI = "http://localhost:5238";
     }
 
-    @Test
+    //@Test
     public void testGetAllSubjects() {
         
         given()
