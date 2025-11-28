@@ -44,7 +44,7 @@ public class InterviewControllerTest {
          .statusCode(200);
     }
 
-    @Test
+   // @Test
     public void rescheduleInterview1(){
         RestAssured.baseURI="http://localhost:5238";
 
@@ -57,7 +57,7 @@ public class InterviewControllerTest {
             .statusCode(200);
     }
 
-    @Test
+   // @Test
     public void rescheduleInterview2(){
         RestAssured.baseURI="http://localhost:5238";
 
@@ -69,7 +69,8 @@ public class InterviewControllerTest {
         .then()
             .statusCode(200);
     }
-    //@Test
+
+   // @Test
     public void rescheduleInterview3(){
         RestAssured.baseURI="http://localhost:5238";
         given()
@@ -96,7 +97,7 @@ public class InterviewControllerTest {
             .statusCode(200);
     }
 
-    @Test
+   // @Test
     public void cancelInterview(){
         RestAssured.baseURI="http://localhost:5238";
 

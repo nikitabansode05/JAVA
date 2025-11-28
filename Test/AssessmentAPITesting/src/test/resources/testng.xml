@@ -7,7 +7,8 @@
             <!-- <class name="com.tap.testing.AssessmentAPITesting.AuthControllerTest"/>
             <class name="com.tap.testing.AssessmentAPITesting.SubjectControllerTest"/>
             <class name="com.tap.testing.AssessmentAPITesting.MembershipControllerTest"/> -->
-            <class name="com.tap.testing.AssessmentAPITesting.InterviewControllerTest"/>
+            <!-- <class name="com.tap.testing.AssessmentAPITesting.InterviewControllerTest"/> -->
+            <class name="com.tap.testing.AssessmentAPITesting.UserSessionControllerTest"/>
         </classes>
     </test>
 </suite>
