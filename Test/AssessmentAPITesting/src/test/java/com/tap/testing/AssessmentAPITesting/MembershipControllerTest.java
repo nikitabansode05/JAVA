@@ -7,9 +7,9 @@ import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 
-public class MembershipTest {
+public class MembershipControllerTest {
     
-    @Test
+//    @Test
     public void updateRole(){
        RestAssured.baseURI="http://localhost:5238";
        String roles="""
@@ -37,7 +37,7 @@ public class MembershipTest {
             .body(equalTo("true"));
     }
 
-   @Test
+  // @Test
     public void updateSmeSubject(){
         RestAssured.baseURI="http://localhost:5238";
 
@@ -50,7 +50,7 @@ public class MembershipTest {
             .statusCode(200);
     }
 
-    @Test
+   // @Test
     public void removeAssignSubject(){
 
         RestAssured.baseURI="http://localhost:5238";

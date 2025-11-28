@@ -124,9 +124,9 @@
 						<include>**/*Testing.java</include>
 					</includes>
 					<useSystemClassLoader>true</useSystemClassLoader>
-					<!-- <suiteXmlFiles>
+					<suiteXmlFiles>
 						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
-					</suiteXmlFiles> -->
+					</suiteXmlFiles>
 				</configuration>
 						
             </plugin>
