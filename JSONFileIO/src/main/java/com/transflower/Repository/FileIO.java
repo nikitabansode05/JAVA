@@ -10,7 +10,7 @@ public class FileIO {
 
     public static void serialize(QuestionBank questionBank){
         try {
-            mapper.writeValue(new File("QuestionBank.json"), questionBank);;
+            mapper.writeValue(new File("QuestionBank.json"), questionBank);
         } catch (Exception e) {
             e.printStackTrace();
         }

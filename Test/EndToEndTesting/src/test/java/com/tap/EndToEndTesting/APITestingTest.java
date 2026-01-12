@@ -1,13 +1,12 @@
 package com.tap.EndToEndTesting;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
 import org.testng.annotations.Test;
-//import io.restassured.http.ContentType;
-import static org.hamcrest.Matchers.*;
 
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
-
 import io.restassured.http.ContentType;
 
 
