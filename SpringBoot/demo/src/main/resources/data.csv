@@ -1,0 +1,7 @@
+1,File Io,dotnet,"For loop, usage",Runs once,Runs multiple times,Runs forever,Does nothing,B,Beginner,Admin
+2,SOLID,dotnet,"Variable declaration",int x,string x,var x,declare x,B,Beginner,Admin
+3,dry,dotnet,"Value ,type ,example",string,array,class,int,D,Intermediate,Admin
+4,kiss,dotnet,"If statement purpose",Looping,Decision making,Compilation,Execution,B,Beginner,Admin
+5,inheritance,dotnet,"Array index starts from",1,0,-1,Any number,B,Beginner,Admin
+16,polymorphism,dotnet,"Main method is",Optional,Entry point,Abstract,Overloaded,B,Beginner,Admin
+
