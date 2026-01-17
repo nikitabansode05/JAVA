@@ -30,4 +30,8 @@ public class StudentController {
         return fsvc.read();
     }
 
+    @GetMapping("/api/sample/list")
+    public List<SampleEntity> readSample(){
+        return fsvc.readSample();
+    }
 }

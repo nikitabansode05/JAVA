@@ -8,8 +8,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.demo.demo.Entity.FileEntity;
+import com.demo.demo.Entity.*;
 import com.opencsv.CSVReader;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
 
 @Repository
 public class CSVFileIO {
@@ -42,4 +44,24 @@ public class CSVFileIO {
         
        return list;
     }
+
+    public List<SampleEntity> readSample(){
+         
+        try{
+            CsvToBean<SampleEntity> csvToBean = new CsvToBeanBuilder<SampleEntity>(new FileReader("src/main/resources/sample.csv"))
+                .withType(SampleEntity.class)   // map to your class
+                .withIgnoreLeadingWhiteSpace(true)
+                .build();
+            List<SampleEntity> records = csvToBean.parse();
+
+            for (SampleEntity record : records) {
+            System.out.println(record);
+            }
+            return records;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }        
+    }
+    
 }

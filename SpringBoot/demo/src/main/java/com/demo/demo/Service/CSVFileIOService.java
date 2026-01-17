@@ -18,4 +18,8 @@ public class CSVFileIOService{
         System.out.println("hiiiiiiiiiiiiiiiiii");
         return repo.read();
     }
+
+    public List<SampleEntity> readSample(){
+        return repo.readSample();
+    }
 }

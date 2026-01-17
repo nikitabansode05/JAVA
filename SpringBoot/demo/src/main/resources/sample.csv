@@ -1,0 +1,6 @@
+id,name,email,age,city,course,score,status
+1,Amit Sharma,amit.sharma@gmail.com,22,Pune,Java,85,Active
+2,Neha Patil,neha.patil@gmail.com,21,Mumbai,Spring Boot,78,Active
+3,Rahul Verma,rahul.verma@gmail.com,23,Nagpur,React,90,Active
+4,Priya Singh,priya.singh@gmail.com,22,Nashik,NodeJS,65,Inactive
+5,Kunal Deshmukh,kunal.d@gmail.com,24,Aurangabad,Python,72,Active
