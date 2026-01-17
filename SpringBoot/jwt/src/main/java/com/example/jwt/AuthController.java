@@ -26,3 +26,6 @@ public class AuthController {
         return Map.of("token", token);
     }
 }
+
+
+//token : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHVkZW50Iiwicm9sZSI6IkFETUlOIiwiaXNzIjoic2VjdXJlLWFwaSIsImlhdCI6MTc2ODY2NDA5OSwiZXhwIjoxNzY4NjY1ODk5fQ.uIQgia6yEU5JBopDiXbyHMqFxxG4h9YcTZY3xttXe9Q

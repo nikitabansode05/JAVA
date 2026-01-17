@@ -9,13 +9,42 @@ import org.springframework.security.config.http.*;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
+// @Configuration
+// @EnableMethodSecurity
+// public class SecurityConfig {
+
+//     @Bean
+//     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+//         http
+//             .csrf(csrf -> csrf.disable())
+//             .sessionManagement(sm ->
+//                 sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//             .authorizeHttpRequests(auth -> auth
+//                 .requestMatchers("/auth/**").permitAll()
+//                 .anyRequest().authenticated())
+//             .addFilterBefore(JWTAuthFilter(),
+//                 UsernamePasswordAuthenticationFilter.class);
+
+//         return http.build();
+//     }
+// }
+
+// // .addFilterBefore(jwtFilter(),
+// //                 UsernamePasswordAuthenticationFilter.class);
+
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
 
+    private final JWTAuthFilter jwtAuthFilter;
+
+    public SecurityConfig(JWTAuthFilter jwtAuthFilter) {
+        this.jwtAuthFilter = jwtAuthFilter;
+    }
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http
             .csrf(csrf -> csrf.disable())
             .sessionManagement(sm ->
@@ -23,12 +52,9 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated())
-            .addFilterBefore(jwtFilter(),
+            .addFilterBefore(jwtAuthFilter,
                 UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 }
-
-// .addFilterBefore(jwtFilter(),
-//                 UsernamePasswordAuthenticationFilter.class);
