@@ -30,4 +30,13 @@ public class JWTUtil {
             .signWith(Keys.hmacShaKeyFor(secret.getBytes()))
             .compact();
     }
+    
+    public String validateTokenAndGetUsername(String token) {
+        return Jwts.parserBuilder()
+            .setSigningKey(Keys.hmacShaKeyFor(secret.getBytes()))
+            .build()
+            .parseClaimsJws(token)
+            .getBody()
+            .getSubject();
+    }
 }

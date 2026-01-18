@@ -1,4 +1,4 @@
-package com.example.jwt;
+package com.example.jwt.DTO;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

@@ -68,7 +68,8 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         if (header != null && header.startsWith("Bearer ")) {
             String token = header.substring(7);
             // validate token using jwtUtil
-            // e.g., jwtUtil.validateToken(token);
+             jwtUtil.validateTokenAndGetUsername(token);
+             
         }
 
         filterChain.doFilter(request, response);
