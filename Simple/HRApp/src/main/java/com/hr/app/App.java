@@ -1,5 +1,8 @@
 package com.hr.app;
-import com.hr.*;
+import com.hr.Employee;
+import com.hr.Interface.IAppraisable;
+import com.hr.SalesEmployee;
+import com.hr.SalesManager;
 
 public class App{
 
@@ -13,6 +16,13 @@ public class App{
         System.out.println(Sansa.computePay());
         System.out.println(Nikita.computePay());
 
-    }
+        SalesManager Mrunmayee=new SalesManager();
+        IAppraisable appraisable=Mrunmayee;
+
+        Mrunmayee.approveLeave();
+        appraisable.conductAppraisal();
+        appraisable.train();
+        // appraisable.takeInterview();
+        }
 }
 

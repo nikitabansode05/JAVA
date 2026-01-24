@@ -1,4 +1,9 @@
 D:\GIT\JAVA\Simple\HRApp\src\main\java\com\hr\app\App.java
 D:\GIT\JAVA\Simple\HRApp\src\main\java\com\hr\Employee.java
+D:\GIT\JAVA\Simple\HRApp\src\main\java\com\hr\Interface\IAppraisable.java
+D:\GIT\JAVA\Simple\HRApp\src\main\java\com\hr\Interface\IBonusEligible.java
+D:\GIT\JAVA\Simple\HRApp\src\main\java\com\hr\Interface\IInterviewPanel.java
+D:\GIT\JAVA\Simple\HRApp\src\main\java\com\hr\Interface\IManagerBenefits.java
+D:\GIT\JAVA\Simple\HRApp\src\main\java\com\hr\Interface\ITrainer.java
 D:\GIT\JAVA\Simple\HRApp\src\main\java\com\hr\SalesEmployee.java
 D:\GIT\JAVA\Simple\HRApp\src\main\java\com\hr\SalesManager.java

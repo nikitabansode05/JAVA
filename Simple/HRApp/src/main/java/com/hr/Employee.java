@@ -9,7 +9,11 @@ public abstract class Employee {
     String location;
     String birthDate;
 
-    Employee(int id,String firstName,String lastName,String email,long contactNumber,String location,String birthDate){
+    public Employee(){
+
+    }
+    
+    public Employee(int id,String firstName,String lastName,String email,long contactNumber,String location,String birthDate){
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;

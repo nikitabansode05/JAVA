@@ -1,6 +1,8 @@
 package com.hr;
 
-public class SalesEmployee extends Employee{
+import com.hr.Interface.IAppraisable;
+
+public class SalesEmployee extends Employee implements IAppraisable{
 
     int incentive;
     int target;
@@ -8,6 +10,10 @@ public class SalesEmployee extends Employee{
     int basicSalary;
     int hra;
 
+    public SalesEmployee(){
+
+    }
+    
     public SalesEmployee(int id, String firstName, String lastName, String email, long contactNumber, String location, String birthDate,
                         int incentive,int target,int achievedTarget,int basicSalary,int hra
     ) {
@@ -36,5 +42,10 @@ public class SalesEmployee extends Employee{
         }
 
         return salary;
+    }
+
+    @Override
+    public void conductAppraisal() {
+        System.out.println("Conducting appraisal for Sales Employee: "+ this.firstName + " " + this.lastName);
     }
 }

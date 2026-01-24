@@ -1,4 +1,9 @@
+com\hr\Interface\IInterviewPanel.class
+com\hr\Interface\IManagerBenefits.class
+com\hr\Interface\ITrainer.class
+com\hr\app\App.class
+com\hr\Interface\IAppraisable.class
 com\hr\SalesEmployee.class
 com\hr\SalesManager.class
 com\hr\Employee.class
-com\hr\app\App.class
+com\hr\Interface\IBonusEligible.class
