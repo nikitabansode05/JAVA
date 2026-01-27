@@ -21,7 +21,7 @@ public class App{
 
         Mrunmayee.approveLeave();
         appraisable.conductAppraisal();
-        appraisable.train();
+        // appraisable.train();
         // appraisable.takeInterview();
         }
 }
