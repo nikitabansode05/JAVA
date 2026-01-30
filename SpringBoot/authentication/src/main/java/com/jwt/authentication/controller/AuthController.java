@@ -22,8 +22,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public Map<String,String> login(@RequestBody LoginCredentials credentials){
-        System.out.println(credentials.getName());
-        String token = jwtUtil.generateToken(credentials.getName(), credentials.getRole());
+        
+        String name=credentials.getUsername();
+        String role=credentials.getRole();
+
+        System.out.println("Username: "+name+" Role: "+role);
+
+        String token = jwtUtil.generateToken(credentials.getUsername(), credentials.getRole());
         return Map.of("token",token);
     }
 }

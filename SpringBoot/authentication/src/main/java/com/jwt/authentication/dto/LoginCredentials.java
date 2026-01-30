@@ -4,11 +4,11 @@ public class LoginCredentials {
     private String username;
     private String role;
 
-    public void setName(String username){
+    public void setUsername(String username){
         this.username=username;
     }
 
-    public String getName(){
+    public String getUsername(){
         return username;
     }
 

@@ -9,11 +9,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import jakarta.servlet.*;
+import com.jwt.authentication.util.JWTUtil;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import com.jwt.authentication.util.*;
 
 @Component
 public class JWTAuthFilter extends OncePerRequestFilter{
@@ -30,13 +31,21 @@ public class JWTAuthFilter extends OncePerRequestFilter{
     @Override
     protected void doFilterInternal(HttpServletRequest request,HttpServletResponse response,FilterChain filterChain)
         throws ServletException,IOException{
+            System.out.println("JWT FILTER CALLED :"+request.getRequestURI());
             String header= request.getHeader("Authorization");
+            System.out.println("Authorization header = " + header);
 
-            if(header!=null && header.startsWith("Bearer")){
+            if(header!=null && header.startsWith("Bearer ")){
                 try {
+                    System.out.println("Token extracted");
                     String token = header.substring(7);//remove word bearer and give pure token
                     String username = jwtUtil.extractUsername(token);
                     String role=jwtUtil.extractRole(token);
+
+                    System.out.println("Username = " + username);
+                    System.out.println("Role = " + role);
+
+                    
                     SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_"+role);//*************************
 
                     if (username != null &&
