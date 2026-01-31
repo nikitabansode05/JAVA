@@ -20,9 +20,9 @@ public class SecurityHeadersFilter extends OncePerRequestFilter{
         FilterChain filterChain)
          throws ServletException,IOException{
 
-            response.setHeader("X-Frame-Options","DENY");
-            response.setHeader("X-Content-Type-Options","nosniff");
-            response.setHeader("Referrer-Policy","no-referrer");
+            response.setHeader("X-Frame-Options","DENY"); //clickjacking protection,never allow my site to be iframed,prevent UI redressing attacks  
+            response.setHeader("X-Content-Type-Options","nosniff");//prevent MIME-type sniffing,avoid scanning attacks
+            response.setHeader("Referrer-Policy","no-referrer");//prevent referrer leakage,stops leaking url,token in url
 
             filterChain.doFilter(request, response);
             

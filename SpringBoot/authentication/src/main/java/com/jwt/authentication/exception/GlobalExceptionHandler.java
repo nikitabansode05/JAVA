@@ -1,4 +1,4 @@
-package com.jwt.authentication.controller;
+package com.jwt.authentication.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

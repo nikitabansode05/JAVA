@@ -1,18 +1,14 @@
 package com.jwt.authentication.util;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.Keys;
-
-import java.util.*;
-
-import io.jsonwebtoken.SignatureException;
-import io.jsonwebtoken.Claims;
 
 @Component
 public class JWTUtil {
@@ -67,26 +63,23 @@ public class JWTUtil {
     }
 
     public String extractRole(String token){
-        return getClaims(token).get("role",String.class); //********************** */
+        return getClaims(token).get("role",String.class); //extract value of key "role" as String
     }
+    
     public boolean isTokenValid(String token) {
         return getClaims(token).getExpiration()
             .after(new Date());
     }
-
-    // private Claims getClaims(String token) {
-    //     return Jwts.parserBuilder()
-    //         .setSigningKey(secret.getBytes())
-    //         .build()
-    //         .parseClaimsJws(token)
-    //         .getBody();
-    // }
+    
     private Claims getClaims(String token) {
-        return Jwts.parserBuilder()
-            .setSigningKey(Keys.hmacShaKeyFor(secret.getBytes()))
-            .build()
-            .parseClaimsJws(token)
-            .getBody();
+        return Jwts.parserBuilder()                                // read the token
+            .setSigningKey(Keys.hmacShaKeyFor(secret.getBytes()))  //hash based message authentication code ,
+                                                                   //takes your secret key compare with token key
+                                                                   //getBytes() converts string to byte array
+
+            .build()                                               //finalize parser configuration
+            .parseClaimsJws(token)                                 //checks token format,algorithm,signature,expiration
+            .getBody();                                            //get the claims (data) present in token,in key-value pairs   
     }
 
 
