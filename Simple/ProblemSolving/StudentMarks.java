@@ -30,23 +30,36 @@ Use a while loop to display a menu:
 Use a switch statement to handle menu choices.
 Use break to exit the loop and continue where appropriate.*/
 
-public class StudentMarks {
-    public static void main(String[] args){
-        int[][] studentMarks={{45,76,12,78},{34,87,9,34},{34,67,98,23}};
-        int sum=0;
-        double average;
-        double [] maxmin={0,0,0,0};
-        String[] grade={"A","B","C","D"};
+import java.util.*;
 
-        for(int i=0;i<3;i++){   //rows
+public class StudentMarks {
+    private static int[][] studentMarks={{45,76,12,78},{34,87,9,34},{34,67,98,23}};
+    private static int sum=0;
+    private static double average;
+    //double [] maxmin={0,0,0,0};
+    private static String[] grade={"A","B","C","D"};
+    private static int input=0;
+    private static Scanner sc=new Scanner(System.in);
+
+    public static void displayMarks(){
+         for(int i=0;i<3;i++){   //rows
             for (int j=0;j<4;j++){ //columns
                 System.out.println("Marks of student "+(i+1)+ " is : "+studentMarks[i][j]);   
                 sum=sum+studentMarks[i][j]; 
             }
-             average=(double)sum/4;
-             maxmin[i]=average;
+            System.out.println("\n");
+    }
+ }
 
-             System.out.println("The average marks of student "+(i+1)+" is : "+average);
+    public static void calculation(){
+        for(int i=0;i<3;i++){   //rows
+            for (int j=0;j<4;j++){ //columns
+                // System.out.println("Marks of student "+(i+1)+ " is : "+studentMarks[i][j]);   
+                sum=sum+studentMarks[i][j]; 
+            }
+             average=(double)sum/4;
+             //maxmin[i]=average;
+              System.out.println("The average marks of student "+(i+1)+" is : "+average);
              if(average>=75){
                 grade[i]="A";
                 System.out.println("Distinction!!"+" Grade : "+grade[i]);  
@@ -62,8 +75,38 @@ public class StudentMarks {
              }
              sum=0;
             System.out.println("\n");
-           
-        }
+    }
 
+    }
+
+    public static void main(String[] args){
+           
+        do{
+            System.out.println("************************************************************\n"+
+                                "1)Display all student marks in table format\n"+
+                                "2)Display total, average, and grade of each student\n"+
+                                "3)Display highest and lowest scorer\n"+
+                                "4)Exit\n"+
+                                "Enter your choice : ");
+            input=sc.nextInt();
+
+            switch(input){
+                case 1:
+                    displayMarks();
+                    break;
+                case 2:
+                    calculation();
+                    break;
+                case 3:
+                    System.out.println("Work in progress !!");
+                    break;
+                case 4:
+                    System.out.println("You choose to exit !!");
+                    break;
+                default:
+                    System.out.println("Byeee!!!!!");
+                    break;
+            }
+        }while(input!=4);
     }
 }
