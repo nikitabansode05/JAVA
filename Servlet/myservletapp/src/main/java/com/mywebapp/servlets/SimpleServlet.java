@@ -27,5 +27,7 @@ public class SimpleServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out=response.getWriter();
         out.println("<h1>Hello from post request !!</h1>");
+        out.println("<h2>Welcome "+request.getParameter("name")+"</h2>");
+        out.println("<h2>The password is : "+request.getParameter("password")+"/<h2>");
     }
 }
