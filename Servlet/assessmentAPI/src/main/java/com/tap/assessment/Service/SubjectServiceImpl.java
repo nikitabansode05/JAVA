@@ -1,12 +1,11 @@
 package com.tap.assessment.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.tap.assessment.Entity.SubjectModel;
 import com.tap.assessment.Repository.SubjectRepository;
 
 public class SubjectServiceImpl implements SubjectService{
-    //SubjectModel sm;
+
     SubjectRepository sr = new SubjectRepository();
 
     public SubjectServiceImpl(){
@@ -15,22 +14,8 @@ public class SubjectServiceImpl implements SubjectService{
     public SubjectServiceImpl(SubjectRepository sr){
         this.sr=sr;
     }
-    // public SubjectServiceImpl(SubjectModel sm){
-    //     this.sm=sm;
-    // }
 
     public List<SubjectModel> getAllSubjects(){
-
         return sr.deserialize();
-        // SubjectModel subject1=new SubjectModel(1,"Physics");
-        // SubjectModel subject2=new SubjectModel(2,"Chemistry");
-        // SubjectModel subject3=new SubjectModel(3,"Maths");
-
-        // List<SubjectModel> subjects=new ArrayList<>();
-        
-        // subjects.add(subject1);
-        // subjects.add(subject2);
-        // subjects.add(subject3);
-        // return subjects;
     }
 }
