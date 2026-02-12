@@ -28,7 +28,7 @@ public class SubjectModel implements Cloneable{
 
     @Override
     public String toString(){
-        return "SubjectModel{id="+id+",subject='"+subject+"'}";
+        return ("Id : "+id+" Subject : "+subject);
     }
 
     // @Override
