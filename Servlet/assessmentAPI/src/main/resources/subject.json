@@ -1,0 +1,19 @@
+[{
+    "id":1,
+    "subject":"Physics"
+},{
+    "id":2,
+    "subject":"Chemistry"
+},
+{
+    "id":3,
+    "subject":"Maths"
+},
+{
+    "id":4,
+    "subject":"Biology"
+},
+{
+    "id":2,
+    "subject":"IT"
+}]

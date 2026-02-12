@@ -1,5 +1,7 @@
 com\tap\assessment\Entity\SubjectModel.class
-com\tap\assessment\Service\SubjectService.class
 com\tap\assessment\Service\SubjectServiceImpl.class
-com\tap\assessment\Entity\IOCContainer.class
+com\tap\assessment\Repository\SubjectRepository.class
 com\tap\assessment\Controller\SubjectController.class
+com\tap\assessment\Repository\SubjectRepository$1.class
+com\tap\assessment\Service\SubjectService.class
+com\tap\assessment\Entity\IOCContainer.class

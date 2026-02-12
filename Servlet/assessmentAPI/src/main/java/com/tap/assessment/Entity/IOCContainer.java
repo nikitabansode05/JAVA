@@ -3,6 +3,7 @@ package com.tap.assessment.Entity;
 import java.util.Map;
 import java.util.HashMap;
 
+import com.tap.assessment.Repository.SubjectRepository;
 import com.tap.assessment.Service.SubjectService;
 import com.tap.assessment.Service.SubjectServiceImpl;
 

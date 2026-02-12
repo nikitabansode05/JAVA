@@ -3,13 +3,13 @@ package com.tap.assessment.Entity;
 public class SubjectModel implements Cloneable{
 
     private int id;
-    private String title;
+    private String subject;
 
     public SubjectModel() {}
 
-    public SubjectModel(int id, String title) {
+    public SubjectModel(int id, String subject) {
         this.id = id;
-        this.title = title;
+        this.subject = subject;
     }
     
     // Getters and Setters
@@ -19,16 +19,16 @@ public class SubjectModel implements Cloneable{
     public void setId(int id){
         this.id=id;
     }
-    public String getTitle(){
-        return title;
+    public String getsubject(){
+        return subject;
     }
-    public void setTitle(String title){
-        this.title=title;
+    public void setsubject(String subject){
+        this.subject=subject;
     }
 
     @Override
     public String toString(){
-        return "SubjectModel{id="+id+",title='"+title+"'}";
+        return "SubjectModel{id="+id+",subject='"+subject+"'}";
     }
 
     // @Override
@@ -37,12 +37,12 @@ public class SubjectModel implements Cloneable{
     //     if (obj == null || getClass() != obj.getClass()) return false;
     //     SubjectModel other = (SubjectModel) obj;
     //     return id==other.id &&
-    //             Objects.equals(title, other.title);
+    //             Objects.equals(subject, other.subject);
     // }
 
     // @Override
     // public int hashCode(){
-    //     return Objects.hash(id,title);
+    //     return Objects.hash(id,subject);
     // }
 
     @Override

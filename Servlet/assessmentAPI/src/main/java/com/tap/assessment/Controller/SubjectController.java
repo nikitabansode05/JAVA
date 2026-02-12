@@ -27,7 +27,9 @@ public class SubjectController extends HttpServlet{
     protected void doGet(HttpServletRequest request,HttpServletResponse response)
     throws IOException{
         PrintWriter out=response.getWriter();
+        
         List<SubjectModel> subjects=subjectService.getAllSubjects();
+
         for(SubjectModel subject:subjects){
             out.println(subject);
         }
