@@ -1,0 +1,4 @@
+com\hospital\command\App.class
+com\hospital\command\entity\Command.class
+com\hospital\command\service\HospitalService.class
+com\hospital\command\router\CommandRouter.class
