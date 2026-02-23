@@ -10,33 +10,48 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import com.tap.students.Entity.Student;
 
+import jakarta.annotation.PostConstruct;
+
 @Repository
 public class StudentRepositoryImpl implements IStudentRepository {
 
-    private static Connection conn;
+    @Value("${spring.datasource.url}")
+    private String url;
+
+    @Value("${spring.datasource.username}")
+    private String username;
+
+    @Value("${spring.datasource.password}")
+    private String password;
+
+    @Value("${spring.datasource.driver-class-name}")
+    private String driver;
+
+    private Connection conn;
+   
     private static Statement st;
     private static PreparedStatement ps;
     private List<Student> stu=new ArrayList<>();
     private List<String> students=new ArrayList<>();
     
-    static {
-        try (InputStream input = StudentRepositoryImpl.class.getClassLoader().getResourceAsStream("application.properties")) {
-            Properties props = new Properties();
-            props.load(input);
-        
-            String url = props.getProperty("db.url");
-            String name = props.getProperty("db.username");
-            String password = props.getProperty("db.password");
-            String driver = props.getProperty("db.driver");
+    @PostConstruct
+    public void init() {
+        try {
+            // If injection fails, it might contain the ${} characters
+            if (driver == null || driver.contains("${")) {
+                driver = "com.mysql.cj.jdbc.Driver"; 
+            }
             Class.forName(driver);
-            conn=DriverManager.getConnection(url,name,password);
-            st=conn.createStatement();
+            this.conn = DriverManager.getConnection(url, username, password);
+            // Initialize the statement so display() doesn't throw a NullPointerException later
+            this.st = conn.createStatement(); 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Database Connection Failed: " + e.getMessage());
         }
     }
     
