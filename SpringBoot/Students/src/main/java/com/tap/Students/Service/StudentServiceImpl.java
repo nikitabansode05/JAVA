@@ -35,7 +35,7 @@ public class StudentServiceImpl implements IStudentService{
 
     @Override
     @Async("taskExecutor")
-    public CompletableFuture<List<String>> display(){
+    public CompletableFuture<List<Student>> display(){
         return CompletableFuture.completedFuture(repo.display());
     }
 

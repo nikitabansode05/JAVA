@@ -1,0 +1,3 @@
+com\shopping\dal\connection\DatabaseConnection.class
+com\shopping\dal\product\ProductDAO.class
+com\shopping\dal\product\IProductDAO.class

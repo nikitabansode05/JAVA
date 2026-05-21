@@ -37,7 +37,7 @@ public class StudentRepositoryImpl implements IStudentRepository {
     private static Statement st;
     private static PreparedStatement ps;
     private List<Student> stu=new ArrayList<>();
-    private List<String> students=new ArrayList<>();
+    private List<Student> students=new ArrayList<>();
     
     @PostConstruct
     public void init() {
@@ -104,11 +104,11 @@ public class StudentRepositoryImpl implements IStudentRepository {
     }
 
     @Override
-    public List<String> display(){
+    public List<Student> display(){
         try{
             ResultSet rs=st.executeQuery("select * from students");
             while(rs.next()){
-               students.add(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+               students.add(new Student(rs.getInt(1),rs.getString(2),rs.getString(3)));
             }
         }catch(Exception e){
             System.out.println(e);

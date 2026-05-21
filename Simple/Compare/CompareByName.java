@@ -1,9 +1,7 @@
 import java.util.*;
 
 public class CompareByName implements Comparator<Student>{
-
     public CompareByName(){
-
     }
 
     @Override

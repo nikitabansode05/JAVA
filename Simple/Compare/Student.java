@@ -28,6 +28,9 @@ public class Student implements Comparable<Student>{
         return Integer.compare(this.roll_no,other.roll_no);
     }
 
-
+    @Override
+    public String toString(){
+        return "Name: "+name+" Roll No: "+roll_no+" Marks: "+marks;
+    }
 
 }

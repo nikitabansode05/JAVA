@@ -42,19 +42,17 @@ public class StudentMarks {
     private static Scanner sc=new Scanner(System.in);
 
     public static void displayMarks(){
-         for(int i=0;i<3;i++){   //rows
-            for (int j=0;j<4;j++){ //columns
+         for(int i=0;i<3;i++){   
+            for (int j=0;j<4;j++){ 
                 System.out.println("Marks of student "+(i+1)+ " is : "+studentMarks[i][j]);   
-                sum=sum+studentMarks[i][j]; 
             }
             System.out.println("\n");
     }
  }
 
     public static void calculation(){
-        for(int i=0;i<3;i++){   //rows
-            for (int j=0;j<4;j++){ //columns
-                // System.out.println("Marks of student "+(i+1)+ " is : "+studentMarks[i][j]);   
+        for(int i=0;i<3;i++){  
+            for (int j=0;j<4;j++){ 
                 sum=sum+studentMarks[i][j]; 
             }
              average=(double)sum/4;

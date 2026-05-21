@@ -46,7 +46,7 @@ public class StudentController {
     }
 
     @GetMapping("/display")
-    public CompletableFuture<List<String>> display() {
+    public CompletableFuture<List<Student>> display() {
         return service.display(); 
     }
 

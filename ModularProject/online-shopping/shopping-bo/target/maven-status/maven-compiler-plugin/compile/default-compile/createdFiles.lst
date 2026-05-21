@@ -1,0 +1,6 @@
+com\shopping\bo\cart\CartItem.class
+com\shopping\bo\enums\Category.class
+com\shopping\bo\enums\OrderStatus.class
+com\shopping\bo\order\Order.class
+com\shopping\bo\product\Product.class
+com\shopping\bo\user\User.class
