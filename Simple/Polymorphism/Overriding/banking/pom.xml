@@ -84,6 +84,15 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.6.1</version>
         </plugin>
+        <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.6.3</version>
+        <configuration>
+            <!-- Specify the fully qualified name of your main class -->
+            <mainClass>com.banking.app.App</mainClass>
+        </configuration>
+    </plugin>
       </plugins>
     </pluginManagement>
   </build>

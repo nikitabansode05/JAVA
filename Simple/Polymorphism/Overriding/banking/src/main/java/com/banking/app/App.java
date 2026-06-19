@@ -1,10 +1,15 @@
 package com.banking.app;
 
-/**
- * Hello world!
- */
+import com.banking.app.account.*;
+import com.banking.app.services.Notification;
+import com.banking.app.services.SMS;
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+       Notification sms=new SMS();
+       Account account =new AccountImpl(8000,sms);
+
+       account.withdraw(500);
+       account.deposit(1000);
     }
 }
