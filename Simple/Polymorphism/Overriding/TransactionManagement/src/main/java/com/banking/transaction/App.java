@@ -1,6 +1,6 @@
 package com.banking.transaction;
 
-import com.banking.transaction.uiManager.Menu;
+import com.banking.transaction.uiManagers.Menu;
 
 public class App {
     public static void main(String[] args) {

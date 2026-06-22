@@ -1,0 +1,114 @@
+[
+    {
+        "accountNo": 101,
+        "operationType": "credited",
+        "datetime": [
+            2026,
+            6,
+            22,
+            16,
+            44,
+            22,
+            907311500
+        ],
+        "amount": 10000.0
+    },
+    {
+        "accountNo": 101,
+        "operationType": "debited",
+        "datetime": [
+            2026,
+            6,
+            22,
+            16,
+            44,
+            29,
+            610718300
+        ],
+        "amount": 5000.0
+    },
+    {
+        "accountNo": 101,
+        "operationType": "debited",
+        "datetime": [
+            2026,
+            6,
+            22,
+            16,
+            45,
+            27,
+            599350900
+        ],
+        "amount": 200.0
+    },
+    {
+        "accountNo": 101,
+        "operationType": "debited",
+        "datetime": [
+            2026,
+            6,
+            22,
+            16,
+            45,
+            32,
+            572811900
+        ],
+        "amount": 290.0
+    },
+    {
+        "accountNo": 101,
+        "operationType": "credited",
+        "datetime": [
+            2026,
+            6,
+            22,
+            16,
+            45,
+            37,
+            603436700
+        ],
+        "amount": 2809.0
+    },
+    {
+        "accountNo": 101,
+        "operationType": "credited",
+        "datetime": [
+            2026,
+            6,
+            22,
+            16,
+            45,
+            43,
+            103744600
+        ],
+        "amount": 179.0
+    },
+    {
+        "accountNo": 101,
+        "operationType": "debited",
+        "datetime": [
+            2026,
+            6,
+            22,
+            16,
+            45,
+            52,
+            284652200
+        ],
+        "amount": 2000.0
+    },
+    {
+        "accountNo": 101,
+        "operationType": "debited",
+        "datetime": [
+            2026,
+            6,
+            22,
+            16,
+            46,
+            1,
+            194017900
+        ],
+        "amount": 10000.0
+    }
+]

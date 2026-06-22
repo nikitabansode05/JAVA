@@ -1,38 +1,38 @@
-package com.banking.transaction.services;
+package com.banking.transaction.accountManagers;
 
 import com.banking.transaction.entities.Account;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.banking.transaction.entities.Operation;
+import com.banking.transaction.listeners.AccountListenerImpl;
+import com.banking.transaction.listeners.AccountListener;
+import com.banking.transaction.repositories.OperationFileManager.OperationsFileIO;
+import com.banking.transaction.repositories.OperationFileManager.OperationsFileIOImpl;
+import com.banking.transaction.repositories.accountFileManager.AccountFileIO;
+import com.banking.transaction.repositories.accountFileManager.AccountFileIOImpl;
 
 public class TransactionServiceImpl implements ITransactionService{
 
-    ObjectMapper mapper=new ObjectMapper();
-    File accountHistory=new File("AccountDetails.json");
-
-
     Account a1=new Account(101,"Nikita Bansode",8000.00,LocalDateTime.now());
     Account a2=new Account(102,"Tanya",7000.00,LocalDateTime.now());
+    List<Account> accountList=new ArrayList<Account>();
+    List<Operation> operations=new ArrayList<Operation>();
 
-
-    public List<Account> accountList=new ArrayList<Account>();
+    AccountFileIO fileIO=new AccountFileIOImpl();
+    OperationsFileIO operationsFile=new OperationsFileIOImpl();
+    AccountListener listener=new AccountListenerImpl();
 
     Scanner sc=new Scanner(System.in);
 
     public TransactionServiceImpl(){
-        mapper.registerModule(new JavaTimeModule());
-
         accountList.add(a1);
         accountList.add(a2);
-
         try {
-            mapper.writeValue(accountHistory, accountList);
+            fileIO.serializeAccount(accountList);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,7 +41,7 @@ public class TransactionServiceImpl implements ITransactionService{
     @Override
     public void getAccountDetails(int accountNo){
         try{
-            List<Account> deserializedAcc=mapper.readValue(accountHistory,new TypeReference<List<Account>>() {});
+            List<Account> deserializedAcc=fileIO.deserializeAccount();
             for(Account a:deserializedAcc){
             if(accountNo==a.getAccountNo()){
                 System.out.println(a);
@@ -68,10 +68,9 @@ public class TransactionServiceImpl implements ITransactionService{
 
         Account account = new Account(accNo,name,balance,LocalDateTime.now());
         try{
-        List<Account> deserializedAcc=mapper.readValue(accountHistory,new TypeReference<List<Account>>() {});
-        deserializedAcc.add(account);
-
-        mapper.writeValue(accountHistory,deserializedAcc);
+            List<Account> deserializedAcc=fileIO.deserializeAccount();
+            deserializedAcc.add(account);
+            fileIO.serializeAccount(deserializedAcc);
       }catch(Exception e){
         e.printStackTrace();
       }
@@ -81,17 +80,20 @@ public class TransactionServiceImpl implements ITransactionService{
     @Override
     public void debit(double amount,int accountNo){
         try{
-            List<Account> deserializedAcc=mapper.readValue(accountHistory,new TypeReference<List<Account>>() {});
+            List<Account> deserializedAcc=fileIO.deserializeAccount();
             for(Account a:deserializedAcc){
-                if(a.getAccountNo()==accountNo){
+                if((a.getAccountNo()==accountNo) && amount<a.getBalance()){
                     double newBalance=a.getBalance();
                     newBalance-=amount;
                     a.setBalance(newBalance);
-                    a.setDatetime(LocalDateTime.now());
-                    System.out.println("The Balance after debit is : "+newBalance);
+                    Operation operation = new Operation(a.getAccountNo(),"debited",LocalDateTime.now(),amount);
+                    operations.add(operation);
+                    operationsFile.serializeOperation(operations);
+                    listener.onDebit(amount,newBalance);
                 }
             }
-            mapper.writeValue(accountHistory,deserializedAcc);
+           
+            fileIO.serializeAccount(deserializedAcc);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -100,18 +102,19 @@ public class TransactionServiceImpl implements ITransactionService{
     @Override
     public void credit(double amount,int accountNo){
         try{
-            List<Account> deserializedAcc=mapper.readValue(accountHistory,new TypeReference<List<Account>>() {});
+            List<Account> deserializedAcc=fileIO.deserializeAccount();
             for(Account a:deserializedAcc){
                 if(a.getAccountNo()==accountNo){
                     double newBalance=a.getBalance();
                     newBalance+=amount;
                     a.setBalance(newBalance);
-                    a.setDatetime(LocalDateTime.now());
-                    System.out.println("The Balance after credit is : "+newBalance);
+                    Operation operation = new Operation(a.getAccountNo(),"credited",LocalDateTime.now(),amount);
+                    operations.add(operation);
+                    operationsFile.serializeOperation(operations);
+                    listener.onCredit(amount, newBalance);
                 }
             }
-
-            mapper.writeValue(accountHistory,deserializedAcc);
+            fileIO.serializeAccount(deserializedAcc);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -122,21 +125,41 @@ public class TransactionServiceImpl implements ITransactionService{
         
         System.out.println("The transaction is successfull from account "+a1.getAccountNo()+" to "+a2.getAccountNo());
         try{
-            List<Account> deserializedAcc=mapper.readValue(accountHistory,new TypeReference<List<Account>>() {});
+            List<Account> deserializedAcc=fileIO.deserializeAccount();
 
             for(Account a:deserializedAcc){
                 if (accountNo1==a.getAccountNo()){
                     debit(amount,accountNo1);
-                    a.setDatetime(LocalDateTime.now());
                 }
                 if(accountNo2==a.getAccountNo()){
                     credit(amount,accountNo2);
-                    a.setDatetime(LocalDateTime.now());
                 }
             }
         }catch(Exception e){
             e.printStackTrace();
         }
     }
-    
+
+    @Override
+    public List<Operation> getStatement(int accountNo){
+        operations=operationsFile.deserializeOperation();
+        List<Operation> accOperations=new ArrayList<Operation>();
+        int count=0;
+        for(Operation o:operations){
+            if(o.getAccountNo()==accountNo){
+                accOperations.add(o);
+                count++;
+            }
+        }
+        System.out.println(count);
+        if(count>5){
+            List<Operation> printOperations=new ArrayList<Operation>();
+            for(int i=(count-1);i>=(count-5);i--){
+                printOperations.add(accOperations.get(i));
+            }
+            return printOperations;
+        }else{
+                return accOperations;
+        }
+    }    
 }

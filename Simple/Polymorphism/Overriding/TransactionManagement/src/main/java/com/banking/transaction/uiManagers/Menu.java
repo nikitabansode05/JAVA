@@ -1,11 +1,11 @@
-package com.banking.transaction.uiManager;
+package com.banking.transaction.uiManagers;
 
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Scanner;
 
-import com.banking.transaction.entities.Account;
-import com.banking.transaction.services.ITransactionService;
-import com.banking.transaction.services.TransactionServiceImpl;
+import com.banking.transaction.accountManagers.ITransactionService;
+import com.banking.transaction.accountManagers.TransactionServiceImpl;
+import com.banking.transaction.entities.Operation;
 
 public class Menu {
     public void getMenu(){
@@ -15,20 +15,18 @@ public class Menu {
         System.out.println("3)Debit");
         System.out.println("4)Transfer");
         System.out.println("5)Create account");
-        System.out.println("6)Exit");
+        System.out.println("6)Get Statement");
+        System.out.println("7)Exit");
         System.out.println("********************************************");
         System.out.println("Enter your choice :");
     }
 
     public void menuOperation(){
         int choice=0;
-        Account a1=new Account(101,"Nikita Bansode",8000.00,LocalDateTime.now());
-        Account a2=new Account(102,"Tanya",7000.00,LocalDateTime.now());
         int amount;
         Scanner sc=new Scanner(System.in);
         ITransactionService operation=new TransactionServiceImpl();
 
-        
         do { 
             getMenu();
             choice=sc.nextInt();
@@ -78,11 +76,20 @@ public class Menu {
                     {
                         operation.createAccount();
                     }
+                    break;
+                case 6:
+                    {
+                        System.out.println("Enter the account number : ");
+                        int accountNo=sc.nextInt();
+                        List<Operation> operationList=operation.getStatement(accountNo);
+                        System.out.print(operationList);
+                    }
+                    break;
                 default:
                     System.out.println("Byeeee!!!!");
                     break;
             }
-        } while (choice!=6);
+        } while (choice!=7);
 
     }
 }
