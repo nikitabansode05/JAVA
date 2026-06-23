@@ -16,7 +16,8 @@ public class Menu {
         System.out.println("4)Transfer");
         System.out.println("5)Create account");
         System.out.println("6)Get Statement");
-        System.out.println("7)Exit");
+        System.out.println("7)Apply Interest");
+        System.out.println("8)Exit");
         System.out.println("********************************************");
         System.out.println("Enter your choice :");
     }
@@ -85,11 +86,22 @@ public class Menu {
                         System.out.print(operationList);
                     }
                     break;
+
+                case 7:
+                {
+                    System.out.println("Enter the account number : ");
+                    int accountNo=sc.nextInt();
+                    System.out.println("Enter the interest percent : ");
+                    int interest=sc.nextInt();
+                    double balance= operation.calculateInterest(accountNo,interest);
+                }
+
+                    break;
                 default:
                     System.out.println("Byeeee!!!!");
                     break;
             }
-        } while (choice!=7);
+        } while (choice!=8);
 
     }
 }

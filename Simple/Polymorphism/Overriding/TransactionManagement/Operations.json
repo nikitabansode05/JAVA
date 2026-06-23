@@ -5,55 +5,14 @@
         "datetime": [
             2026,
             6,
-            22,
             16,
-            44,
-            22,
-            907311500
+            13,
+            28,
+            7,
+            967417800
         ],
-        "amount": 10000.0
-    },
-    {
-        "accountNo": 101,
-        "operationType": "debited",
-        "datetime": [
-            2026,
-            6,
-            22,
-            16,
-            44,
-            29,
-            610718300
-        ],
-        "amount": 5000.0
-    },
-    {
-        "accountNo": 101,
-        "operationType": "debited",
-        "datetime": [
-            2026,
-            6,
-            22,
-            16,
-            45,
-            27,
-            599350900
-        ],
-        "amount": 200.0
-    },
-    {
-        "accountNo": 101,
-        "operationType": "debited",
-        "datetime": [
-            2026,
-            6,
-            22,
-            16,
-            45,
-            32,
-            572811900
-        ],
-        "amount": 290.0
+        "amount": 900.0,
+        "balance": 8900.0
     },
     {
         "accountNo": 101,
@@ -61,13 +20,14 @@
         "datetime": [
             2026,
             6,
-            22,
+            17,
+            13,
+            28,
             16,
-            45,
-            37,
-            603436700
+            928537800
         ],
-        "amount": 2809.0
+        "amount": 600.0,
+        "balance": 9500.0
     },
     {
         "accountNo": 101,
@@ -75,13 +35,29 @@
         "datetime": [
             2026,
             6,
-            22,
-            16,
-            45,
+            18,
+            13,
+            28,
+            24,
+            744542300
+        ],
+        "amount": 1000.0,
+        "balance": 10500.0
+    },
+    {
+        "accountNo": 101,
+        "operationType": "debited",
+        "datetime": [
+            2026,
+            6,
+            19,
+            13,
+            28,
             43,
-            103744600
+            364333200
         ],
-        "amount": 179.0
+        "amount": 500.0,
+        "balance": 10000.0
     },
     {
         "accountNo": 101,
@@ -89,26 +65,43 @@
         "datetime": [
             2026,
             6,
-            22,
-            16,
-            45,
-            52,
-            284652200
+            20,
+            13,
+            28,
+            58,
+            414901600
         ],
-        "amount": 2000.0
+        "amount": 500.0,
+        "balance": 9500.0
     },
     {
         "accountNo": 101,
-        "operationType": "debited",
+        "operationType": "Interest",
         "datetime": [
             2026,
             6,
-            22,
-            16,
-            46,
-            1,
-            194017900
+            25,
+            13,
+            34,
+            42,
+            785392700
         ],
-        "amount": 10000.0
+        "amount": 677.6,
+        "balance": 49077.6
+    },
+    {
+        "accountNo": 101,
+        "operationType": "Interest",
+        "datetime": [
+            2026,
+            6,
+            25,
+            13,
+            49,
+            44,
+            829752900
+        ],
+        "amount": 812.3133333333335,
+        "balance": 98289.91333333334
     }
 ]

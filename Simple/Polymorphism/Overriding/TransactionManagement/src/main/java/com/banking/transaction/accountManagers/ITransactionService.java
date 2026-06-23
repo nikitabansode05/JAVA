@@ -11,4 +11,6 @@ public interface ITransactionService {
     void getAccountDetails(int accountNo);
     void createAccount();
     List<Operation> getStatement(int accountNo);
+    double calculateInterest(int accountNo,double interest);
+    void ApplyInteresttoAll(double interest);
 }

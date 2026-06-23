@@ -7,15 +7,17 @@ public class Operation {
     String operationType;
     LocalDateTime datetime;
     double amount;
+    double balance;
 
     public Operation() {
     }
 
-    public Operation(int accountNo,String operationType,LocalDateTime datetime,double amount){
+    public Operation(int accountNo,String operationType,LocalDateTime datetime,double amount,double balance){
         this.accountNo=accountNo;
         this.operationType=operationType;
         this.datetime=datetime;
         this.amount=amount;
+        this.balance=balance;
     }
 
     public void setAccountNo(int accountNo){
@@ -50,8 +52,16 @@ public class Operation {
         return amount;
     }
 
+    public void setBalance(double balance){
+        this.balance=balance;
+    }
+
+    public double getBalance(){
+        return balance;
+    }
+
     @Override
     public String toString(){
-        return ("Account No :"+accountNo+" Operation Type :"+operationType+" amount :"+amount+" DateTime : "+datetime);
+        return ("Account No :"+accountNo+" Operation Type :"+operationType+" amount :"+amount+" DateTime : "+datetime+" Balance"+balance);
     }
 }
