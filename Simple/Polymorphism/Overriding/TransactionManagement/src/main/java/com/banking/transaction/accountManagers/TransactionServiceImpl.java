@@ -33,8 +33,8 @@ public class TransactionServiceImpl implements ITransactionService{
     @Override
     public void getAccountDetails(int accountNo){
         try{
-            List<Account> deserializedAcc=fileIO.deserializeAccount();
-            for(Account a:deserializedAcc){
+            accountList=fileIO.deserializeAccount();
+            for(Account a:accountList){
             if(accountNo==a.getAccountNo()){
                 System.out.println(a);
             }
@@ -60,9 +60,9 @@ public class TransactionServiceImpl implements ITransactionService{
 
         Account account = new Account(accNo,name,balance,LocalDateTime.now());
         try{
-            List<Account> deserializedAcc=fileIO.deserializeAccount();
-            deserializedAcc.add(account);
-            fileIO.serializeAccount(deserializedAcc);
+            accountList=fileIO.deserializeAccount();
+            accountList.add(account);
+            fileIO.serializeAccount(accountList);
       }catch(Exception e){
         e.printStackTrace();
       }
@@ -72,8 +72,9 @@ public class TransactionServiceImpl implements ITransactionService{
     @Override
     public void debit(double amount,int accountNo){
         try{
-            List<Account> deserializedAcc=fileIO.deserializeAccount();
-            for(Account a:deserializedAcc){
+            accountList=fileIO.deserializeAccount();
+            operations=operationsFile.deserializeOperation();
+            for(Account a:accountList){
                 if((a.getAccountNo()==accountNo) && amount<a.getBalance()){
                     double newBalance=a.getBalance();
                     newBalance-=amount;
@@ -85,7 +86,7 @@ public class TransactionServiceImpl implements ITransactionService{
                 }
             }
            
-            fileIO.serializeAccount(deserializedAcc);
+            fileIO.serializeAccount(accountList);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -94,8 +95,9 @@ public class TransactionServiceImpl implements ITransactionService{
     @Override
     public void credit(double amount,int accountNo){
         try{
-            List<Account> deserializedAcc=fileIO.deserializeAccount();
-            for(Account a:deserializedAcc){
+            accountList=fileIO.deserializeAccount();
+            operations=operationsFile.deserializeOperation();
+            for(Account a:accountList){
                 if(a.getAccountNo()==accountNo){
                     double newBalance=a.getBalance();
                     newBalance+=amount;
@@ -106,7 +108,7 @@ public class TransactionServiceImpl implements ITransactionService{
                     listener.onCredit(amount, newBalance);
                 }
             }
-            fileIO.serializeAccount(deserializedAcc);
+            fileIO.serializeAccount(accountList);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -114,12 +116,10 @@ public class TransactionServiceImpl implements ITransactionService{
 
     @Override
     public void transation(int accountNo1,int accountNo2,double amount){
-        
-        System.out.println("The transaction is successfull from account "+accountNo1+" to "+accountNo2);
         try{
-            List<Account> deserializedAcc=fileIO.deserializeAccount();
+            accountList=fileIO.deserializeAccount();
 
-            for(Account a:deserializedAcc){
+            for(Account a:accountList){
                 if (accountNo1==a.getAccountNo()){
                     debit(amount,accountNo1);
                 }
@@ -210,8 +210,70 @@ public class TransactionServiceImpl implements ITransactionService{
        return totalinterest;
     }
 
+    @Override
+    public double applyInterest(int accountNo,double interest){
+        accountList=fileIO.deserializeAccount();
+        operations=operationsFile.deserializeOperation();
+        List<Operation> getLog=new ArrayList<Operation>();
+        List<Double> interests=new ArrayList<Double>();
+        double totalinterest=0;
+
+        for(Operation o:operations){
+            if(o.getAccountNo()==accountNo){
+                getLog.add(o);
+            }
+        }
+
+
+       for(int i=0;i<getLog.size()-1;i++){
+        LocalDateTime startDateTime = getLog.get(i).getDatetime();
+        LocalDateTime endDateTime =getLog.get(i+1).getDatetime();
+        LocalDate startDate = startDateTime.toLocalDate();
+        LocalDate endDate = endDateTime.toLocalDate();
+        double addInterest = interestCalculation(startDate,endDate,interest,getLog.get(i).getBalance());        
+        interests.add(addInterest);
+       }
+
+       double getBalance=0;
+       int getIndex=getLog.size()-1;
+       LocalDateTime lastTransactionDate=getLog.get(getIndex).getDatetime();
+
+       System.out.println(lastTransactionDate);
+
+       for(Account a:accountList){
+        if(a.getAccountNo()==accountNo){
+            getBalance=a.getBalance();
+        }
+       }
+
+       double interestTillCurrentDate=interestCalculation(lastTransactionDate.toLocalDate(),LocalDate.now(),interest,getBalance);
+    
+       for(int i=0;i<=interests.size()-1;i++){
+        totalinterest+=interests.get(i);
+       }
+
+       totalinterest+=interestTillCurrentDate;
+       System.out.println("total interest after :"+totalinterest);
+
+       double newBalance=getBalance+=totalinterest;
+       System.out.println("The balance after appling interest :"+newBalance);
+       return totalinterest;
+    }
+
+    @Override
+    public double interestCalculation(LocalDate fromdate,LocalDate todate,double interest,double balance){
+        long days = ChronoUnit.DAYS.between(fromdate, todate);
+        double principleAmount=balance;
+        double base=1+((interest/100)/365);
+        double power=days;
+        double calculateBasePower=Math.pow(base, power);
+        double finaAmount= principleAmount*(calculateBasePower);
+        double calculatedInterest = finaAmount-principleAmount; 
+        return calculatedInterest;
+    }
+
     @Override 
-    public void ApplyInteresttoAll(double interest){
+    public void applyInteresttoAll(double interest){
 
         accountList=fileIO.deserializeAccount();
         List<Integer> accNo=new ArrayList<Integer>();
@@ -224,24 +286,20 @@ public class TransactionServiceImpl implements ITransactionService{
             calculateInterest(i, interest);
         }
     }
+
+    public void applyInterestToSteadyAccount(int accountNo,int interest){
+        accountList=fileIO.deserializeAccount();
+        double calculatedInterest=0;
+        double balance=0;
+        for(Account a:accountList){
+            if(a.getAccountNo()==accountNo){
+                LocalDate startDate=a.getDatetime().toLocalDate();
+                LocalDate currentDate=LocalDate.now();
+                calculatedInterest=interestCalculation(startDate,currentDate,interest,a.getBalance());
+                balance=a.getBalance()+calculatedInterest;
+            }
+        }
+    }
+
 }
 
-
-// import java.time.LocalDateTime;
-// import java.time.temporal.ChronoUnit;
-
-// public class Main {
-//     public static void main(String[] args) {
-//         LocalDateTime startDateTime = LocalDateTime.parse("2026-06-22T23:00:00");
-//         LocalDateTime endDateTime = LocalDateTime.parse("2026-06-23T05:00:00");
-
-//         // Approach A: Strict 24-hour duration (returns 0 because 24 hours haven't passed)
-//         long strictDays = ChronoUnit.DAYS.between(startDateTime, endDateTime);
-
-//         // Approach B: Calendar days (returns 1 because it spans into the next day)
-//         long calendarDays = ChronoUnit.DAYS.between(startDateTime.toLocalDate(), endDateTime.toLocalDate());
-
-//         System.out.println("Strict 24-hour days: " + strictDays);
-//         System.out.println("Calendar days: " + calendarDays);
-//     }
-// }

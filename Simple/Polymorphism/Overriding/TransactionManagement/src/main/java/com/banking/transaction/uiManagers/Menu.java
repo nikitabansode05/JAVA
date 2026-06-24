@@ -6,9 +6,15 @@ import java.util.Scanner;
 import com.banking.transaction.accountManagers.ITransactionService;
 import com.banking.transaction.accountManagers.TransactionServiceImpl;
 import com.banking.transaction.entities.Operation;
+import com.banking.transaction.transactionManagers.AccountDepartment;
+
 
 public class Menu {
-    public void getMenu(){
+
+    Scanner sc=new Scanner(System.in);
+
+    public int getMenu(){
+        int choice=0;
         System.out.println("********************************************");
         System.out.println("1)Show Balance");
         System.out.println("2)Credit");
@@ -17,15 +23,20 @@ public class Menu {
         System.out.println("5)Create account");
         System.out.println("6)Get Statement");
         System.out.println("7)Apply Interest");
-        System.out.println("8)Exit");
+        System.out.println("8)Apply Interest to all");
+        System.out.println("9)Exit");
         System.out.println("********************************************");
         System.out.println("Enter your choice :");
+        choice=sc.nextInt();
+
+        return choice;
     }
 
     public void menuOperation(){
         int choice=0;
         int amount;
-        Scanner sc=new Scanner(System.in);
+        int accountNo;
+        int interest;
         ITransactionService operation=new TransactionServiceImpl();
 
         do { 
@@ -35,41 +46,32 @@ public class Menu {
             switch(choice){
                 case 1 :
                     {
-                        System.out.println("Enter the Account Number : ");
-                        int accountNo=sc.nextInt();
+                        accountNo=getAccountNo();
                         operation.getAccountDetails(accountNo);
                     }
                     
                     break;
                 case 2 :
                     {
-                        System.out.println("Enter amount to credit : ");
-                        amount=sc.nextInt();
-                        System.out.println("Enter the account number : ");
-                        int accountNo=sc.nextInt();
-
+                        amount=getAmount();
+                        accountNo=getAccountNo();
                         operation.credit(amount,accountNo);
                     }
                     break;
                 case 3:
                     {
-                        System.out.println("Enter amount to debit : ");
-                        amount=sc.nextInt();
-                        System.out.println("Enter the account number : ");
-                        int accountNo=sc.nextInt();
-
+                        amount=getAmount();
+                        accountNo=getAccountNo();
                         operation.debit(amount,accountNo);
                     }
                     break;
                 case 4:
-                     {
-                        System.out.println("Enter amount to transfer : ");
-                        amount=sc.nextInt();
+                    {
+                        amount=getAmount();
                         System.out.println("Enter the account number to debit from : ");
                         int acc1=sc.nextInt();
                         System.out.println("Enter the account number to credit  : ");
                         int acc2=sc.nextInt();
-
                         operation.transation(acc1, acc2, amount);
                     }
                     break;
@@ -80,8 +82,7 @@ public class Menu {
                     break;
                 case 6:
                     {
-                        System.out.println("Enter the account number : ");
-                        int accountNo=sc.nextInt();
+                        accountNo=getAccountNo();
                         List<Operation> operationList=operation.getStatement(accountNo);
                         System.out.print(operationList);
                     }
@@ -89,19 +90,98 @@ public class Menu {
 
                 case 7:
                 {
-                    System.out.println("Enter the account number : ");
-                    int accountNo=sc.nextInt();
-                    System.out.println("Enter the interest percent : ");
-                    int interest=sc.nextInt();
-                    double balance= operation.calculateInterest(accountNo,interest);
+                    accountNo=getAccountNo();
+                    interest=getInterest();
+                    double totalInterest= operation.applyInterest(accountNo,interest);
+                    System.out.println(totalInterest);
                 }
 
-                    break;
+                break;
+                case 8:
+                {
+                    interest=getInterest();
+                    operation.applyInteresttoAll(interest);
+                }
+
                 default:
                     System.out.println("Byeeee!!!!");
                     break;
             }
-        } while (choice!=8);
+        } while (choice!=9);
 
+    }
+
+    public int getAccountNo(){
+        System.out.println("Enter the account number : ");
+        int accountNo=sc.nextInt();
+        return accountNo;
+    }
+
+    public int getAmount(){
+        System.out.println("Enter the amount number : ");
+        int amount=sc.nextInt();
+        return amount;
+    }
+
+    public int getInterest(){
+        System.out.println("Enter the interest percent : ");
+        int interest=sc.nextInt();
+        return interest;
+    }
+
+    public void debitUI(){
+        AccountDepartment accountOperation=new AccountDepartment();
+        double amount=getAmount();
+        int accountNo=getAccountNo();
+        accountOperation.debit(amount,accountNo);
+    }
+
+    public void creditUI(){
+        AccountDepartment accountOperation=new AccountDepartment();
+        double amount=getAmount();
+        int accountNo=getAccountNo();
+        accountOperation.credit(amount,accountNo);
+    }
+
+    public void getAccountDetailUI(){
+        AccountDepartment accountOperation=new AccountDepartment();
+        int accountNo=getAccountNo();
+        accountOperation.showAccountDetails(accountNo);
+    }
+
+    public void fundTransferUI(){
+        AccountDepartment accountOperation=new AccountDepartment();
+        double amount=getAmount();
+        System.out.println("Enter the account number to debit from : ");
+        int acc1=sc.nextInt();
+        System.out.println("Enter the account number to credit  : ");
+        int acc2=sc.nextInt();
+        accountOperation.transation(acc1, acc2, amount);
+    }
+
+    public void applyInterest(){
+        AccountDepartment accountOperation=new AccountDepartment();
+        int accountNo=getAccountNo();
+        double interest=getInterest();
+        double totalInterest= accountOperation.applyInterest(accountNo,interest);
+        System.out.println(totalInterest);
+    }
+
+    public void printStatement(){
+        AccountDepartment accountOperation=new AccountDepartment();
+        int accountNo=getAccountNo();
+        List<Operation> operationList=accountOperation.getStatement(accountNo);
+        System.out.print(operationList);
+    }
+
+    public void applyInterestToAll(){
+        AccountDepartment accountOperation=new AccountDepartment();
+        double interest=getInterest();
+        accountOperation.applyInteresttoAll(interest);
+    }
+
+    public void createAccount(){
+        AccountDepartment accountOperation=new AccountDepartment();
+        accountOperation.createAccount();
     }
 }

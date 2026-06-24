@@ -1,11 +1,14 @@
 package com.banking.transaction;
 
-import com.banking.transaction.uiManagers.Menu;
+import com.banking.transaction.routes.AccountRouter;
 
 public class App {
     public static void main(String[] args) {
-       Menu operation=new Menu();
-       operation.menuOperation();
+    //    Menu operation=new Menu();
+    //    operation.menuOperation();
+
+    AccountRouter router =new AccountRouter();
+    router.accountMenuRouter();
     }
 }
 
