@@ -32,85 +32,6 @@ public class Menu {
         return choice;
     }
 
-    public void menuOperation(){
-        int choice=0;
-        int amount;
-        int accountNo;
-        int interest;
-        ITransactionService operation=new TransactionServiceImpl();
-
-        do { 
-            getMenu();
-            choice=sc.nextInt();
-
-            switch(choice){
-                case 1 :
-                    {
-                        accountNo=getAccountNo();
-                        operation.getAccountDetails(accountNo);
-                    }
-                    
-                    break;
-                case 2 :
-                    {
-                        amount=getAmount();
-                        accountNo=getAccountNo();
-                        operation.credit(amount,accountNo);
-                    }
-                    break;
-                case 3:
-                    {
-                        amount=getAmount();
-                        accountNo=getAccountNo();
-                        operation.debit(amount,accountNo);
-                    }
-                    break;
-                case 4:
-                    {
-                        amount=getAmount();
-                        System.out.println("Enter the account number to debit from : ");
-                        int acc1=sc.nextInt();
-                        System.out.println("Enter the account number to credit  : ");
-                        int acc2=sc.nextInt();
-                        operation.transation(acc1, acc2, amount);
-                    }
-                    break;
-                case 5:
-                    {
-                        operation.createAccount();
-                    }
-                    break;
-                case 6:
-                    {
-                        accountNo=getAccountNo();
-                        List<Operation> operationList=operation.getStatement(accountNo);
-                        System.out.print(operationList);
-                    }
-                    break;
-
-                case 7:
-                {
-                    accountNo=getAccountNo();
-                    interest=getInterest();
-                    double totalInterest= operation.applyInterest(accountNo,interest);
-                    System.out.println(totalInterest);
-                }
-
-                break;
-                case 8:
-                {
-                    interest=getInterest();
-                    operation.applyInteresttoAll(interest);
-                }
-
-                default:
-                    System.out.println("Byeeee!!!!");
-                    break;
-            }
-        } while (choice!=9);
-
-    }
-
     public int getAccountNo(){
         System.out.println("Enter the account number : ");
         int accountNo=sc.nextInt();
@@ -159,7 +80,7 @@ public class Menu {
         accountOperation.transation(acc1, acc2, amount);
     }
 
-    public void applyInterest(){
+    public void applyInterestUI(){
         AccountDepartment accountOperation=new AccountDepartment();
         int accountNo=getAccountNo();
         double interest=getInterest();
@@ -167,20 +88,20 @@ public class Menu {
         System.out.println(totalInterest);
     }
 
-    public void printStatement(){
+    public void printStatementUI(){
         AccountDepartment accountOperation=new AccountDepartment();
         int accountNo=getAccountNo();
         List<Operation> operationList=accountOperation.getStatement(accountNo);
         System.out.print(operationList);
     }
 
-    public void applyInterestToAll(){
+    public void applyInterestToAllUI(){
         AccountDepartment accountOperation=new AccountDepartment();
         double interest=getInterest();
         accountOperation.applyInteresttoAll(interest);
     }
 
-    public void createAccount(){
+    public void createAccountUI(){
         AccountDepartment accountOperation=new AccountDepartment();
         accountOperation.createAccount();
     }

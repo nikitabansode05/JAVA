@@ -192,9 +192,15 @@ public class AccountDepartment implements IDepositOperation,IWithdrawOperation,I
         interests.add(addInterest);
        }
 
+       if(getLog == null || getLog.isEmpty()){
+            System.out.println("No operation history found.");
+            return 0;
+        }
+
        double getBalance=0;
        int getIndex=getLog.size()-1;
-       LocalDateTime lastTransactionDate=getLog.get(getIndex).getDatetime();
+
+        LocalDateTime lastTransactionDate=getLog.get(getIndex).getDatetime();
 
        for(Account a:accountList){
         if(a.getAccountNo()==accountNo){
@@ -212,6 +218,7 @@ public class AccountDepartment implements IDepositOperation,IWithdrawOperation,I
 
        double newBalance=getBalance+=totalinterest;
        System.out.println("The balance after appling interest :"+newBalance);
+       credit(totalinterest,accountNo);
        return totalinterest;
     }
 

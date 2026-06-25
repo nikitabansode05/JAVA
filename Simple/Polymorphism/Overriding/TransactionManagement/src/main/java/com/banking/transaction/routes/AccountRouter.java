@@ -35,24 +35,24 @@ public class AccountRouter{
                     break;
                 case 5:
                     {
-                       menu.createAccount();
+                       menu.createAccountUI();
                     }
                     break;
                 case 6:
                     {
-                       menu.printStatement();
+                       menu.printStatementUI();
                     }
                     break;
 
                 case 7:
                 {
-                   menu.applyInterest();
+                   menu.applyInterestUI();
                 }
 
                 break;
                 case 8:
                 {
-                    menu.applyInterestToAll();
+                    menu.applyInterestToAllUI();
                 }
 
                 default:

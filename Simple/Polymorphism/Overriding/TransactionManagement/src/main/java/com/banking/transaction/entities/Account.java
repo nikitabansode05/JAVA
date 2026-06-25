@@ -3,6 +3,7 @@ package com.banking.transaction.entities;
 import java.time.LocalDateTime;
 
 public class Account{
+    
     private int accountNo;
     private String name;
     private double balance;
