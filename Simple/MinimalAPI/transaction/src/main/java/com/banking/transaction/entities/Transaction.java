@@ -2,19 +2,19 @@ package com.banking.transaction.entities;
 
 import java.time.LocalDateTime;
 
-public class Operation {
+public class Transaction {
     int accountNo;
-    String operationType;
+    String transactionType;
     LocalDateTime datetime;
     double amount;
     double balance;
 
-    public Operation() {
+    public Transaction() {
     }
 
-    public Operation(int accountNo,String operationType,LocalDateTime datetime,double amount,double balance){
+    public Transaction(int accountNo,String transactionType,LocalDateTime datetime,double amount,double balance){
         this.accountNo=accountNo;
-        this.operationType=operationType;
+        this.transactionType=transactionType;
         this.datetime=datetime;
         this.amount=amount;
         this.balance=balance;
@@ -28,12 +28,12 @@ public class Operation {
         return accountNo;
     }
 
-    public void setOperationType(String operationType){
-        this.operationType=operationType;
+    public void settransactionType(String transactionType){
+        this.transactionType=transactionType;
     }
 
-    public String getOperationType(){
-        return operationType;
+    public String gettransactionType(){
+        return transactionType;
     }
 
     public LocalDateTime getDatetime(){
@@ -62,6 +62,6 @@ public class Operation {
 
     @Override
     public String toString(){
-        return ("Account No :"+accountNo+" Operation Type :"+operationType+" amount :"+amount+" DateTime : "+datetime+" Balance"+balance);
+        return ("Account No :"+accountNo+" transaction Type :"+transactionType+" amount :"+amount+" DateTime : "+datetime+" Balance"+balance);
     }
 }

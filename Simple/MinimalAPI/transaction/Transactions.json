@@ -1,0 +1,617 @@
+[
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            24,
+            11,
+            5,
+            5,
+            602051700
+        ],
+        "amount": 100.0,
+        "balance": 17000.0
+    },
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            24,
+            11,
+            10,
+            38,
+            527621500
+        ],
+        "amount": 1000.0,
+        "balance": 18000.0
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            2,
+            11,
+            11,
+            0,
+            346349000
+        ],
+        "amount": 1000.0,
+        "balance": 90390.91333333334
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "debited",
+        "datetime": [
+            2026,
+            6,
+            20,
+            11,
+            11,
+            28,
+            618407600
+        ],
+        "amount": 1000.0,
+        "balance": 89390.91333333334
+    },
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            24,
+            17,
+            55,
+            34,
+            677120100
+        ],
+        "amount": 1000.0,
+        "balance": 19000.0
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "debited",
+        "datetime": [
+            2026,
+            6,
+            24,
+            17,
+            55,
+            49,
+            609250600
+        ],
+        "amount": 1500.0,
+        "balance": 87890.91333333334
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "debited",
+        "datetime": [
+            2026,
+            6,
+            24,
+            17,
+            56,
+            1,
+            949827200
+        ],
+        "amount": 1500.0,
+        "balance": 86390.91333333334
+    },
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            24,
+            17,
+            56,
+            2,
+            19457000
+        ],
+        "amount": 1500.0,
+        "balance": 20500.0
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            12,
+            9,
+            56,
+            429121900
+        ],
+        "amount": 170.31553047106718,
+        "balance": 86561.22886380441
+    },
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            12,
+            9,
+            56,
+            584908600
+        ],
+        "amount": 1.684931506850262,
+        "balance": 20501.68493150685
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            16,
+            54,
+            0,
+            183427600
+        ],
+        "amount": 1.0,
+        "balance": 86562.22886380441
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "debited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            16,
+            59,
+            20,
+            6862600
+        ],
+        "amount": 1.0,
+        "balance": 86561.22886380441
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "debited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            17,
+            1,
+            17,
+            262172700
+        ],
+        "amount": 1.0,
+        "balance": 86560.22886380441
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "debited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            17,
+            54,
+            17,
+            24034500
+        ],
+        "amount": 5000.0,
+        "balance": 81560.22886380441
+    },
+    {
+        "accountNo": 106,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            17,
+            54,
+            17,
+            112956000
+        ],
+        "amount": 5000.0,
+        "balance": 10000.0
+    },
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            18,
+            1,
+            19,
+            68472400
+        ],
+        "amount": 1.684931506850262,
+        "balance": 20503.3698630137
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            18,
+            4,
+            29,
+            188550400
+        ],
+        "amount": 170.31553047106718,
+        "balance": 81730.54439427548
+    },
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            18,
+            4,
+            29,
+            273631700
+        ],
+        "amount": 1.684931506850262,
+        "balance": 20505.05479452055
+    },
+    {
+        "accountNo": 106,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            25,
+            18,
+            4,
+            29,
+            348515600
+        ],
+        "amount": 0.0,
+        "balance": 10000.0
+    },
+    {
+        "accountNo": 105,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            10,
+            30,
+            26,
+            862705500
+        ],
+        "amount": 150.0,
+        "balance": 5150.0
+    },
+    {
+        "accountNo": 104,
+        "transactionType": "debited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            10,
+            38,
+            33,
+            963912000
+        ],
+        "amount": 1500.0,
+        "balance": 8500.0
+    },
+    {
+        "accountNo": 103,
+        "transactionType": "debited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            2,
+            40,
+            797043600
+        ],
+        "amount": 1000.0,
+        "balance": 8000.0
+    },
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            2,
+            41,
+            31109200
+        ],
+        "amount": 1000.0,
+        "balance": 21505.05479452055
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            19,
+            35,
+            923043200
+        ],
+        "amount": 177.03310946238344,
+        "balance": 81907.57750373786
+    },
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            19,
+            36,
+            141648100
+        ],
+        "amount": 3.3702784762645024,
+        "balance": 21508.425072996815
+    },
+    {
+        "accountNo": 103,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            19,
+            36,
+            519898300
+        ],
+        "amount": 0.0,
+        "balance": 8000.0
+    },
+    {
+        "accountNo": 104,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            19,
+            36,
+            955038400
+        ],
+        "amount": 0.0,
+        "balance": 8500.0
+    },
+    {
+        "accountNo": 105,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            19,
+            37,
+            615951000
+        ],
+        "amount": 0.0,
+        "balance": 5150.0
+    },
+    {
+        "accountNo": 106,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            19,
+            37,
+            974791900
+        ],
+        "amount": 0.8219178082199505,
+        "balance": 10000.82191780822
+    },
+    {
+        "accountNo": 106,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            43,
+            28,
+            627363100
+        ],
+        "amount": 300.0,
+        "balance": 10300.82191780822
+    },
+    {
+        "accountNo": 104,
+        "transactionType": "debited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            44,
+            12,
+            690897900
+        ],
+        "amount": 300.0,
+        "balance": 8200.0
+    },
+    {
+        "accountNo": 105,
+        "transactionType": "debited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            45,
+            24,
+            525194400
+        ],
+        "amount": 90.0,
+        "balance": 5060.0
+    },
+    {
+        "accountNo": 103,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            45,
+            24,
+            601733300
+        ],
+        "amount": 90.0,
+        "balance": 8090.0
+    },
+    {
+        "accountNo": 105,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            46,
+            28,
+            548092700
+        ],
+        "amount": 0.0,
+        "balance": 5060.0
+    },
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            47,
+            2,
+            161788400
+        ],
+        "amount": 2.80856539688466,
+        "balance": 21511.2336383937
+    },
+    {
+        "accountNo": 101,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            47,
+            28,
+            291687400
+        ],
+        "amount": 162.27293073988403,
+        "balance": 82069.85043447775
+    },
+    {
+        "accountNo": 102,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            47,
+            28,
+            392245500
+        ],
+        "amount": 3.089421936572762,
+        "balance": 21514.323060330273
+    },
+    {
+        "accountNo": 103,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            47,
+            28,
+            487257100
+        ],
+        "amount": 0.0,
+        "balance": 8090.0
+    },
+    {
+        "accountNo": 104,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            47,
+            28,
+            517772400
+        ],
+        "amount": 0.0,
+        "balance": 8200.0
+    },
+    {
+        "accountNo": 105,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            47,
+            28,
+            558771700
+        ],
+        "amount": 0.0,
+        "balance": 5060.0
+    },
+    {
+        "accountNo": 106,
+        "transactionType": "credited",
+        "datetime": [
+            2026,
+            6,
+            26,
+            11,
+            47,
+            28,
+            596783800
+        ],
+        "amount": 0.7534246575341967,
+        "balance": 10301.575342465754
+    }
+]

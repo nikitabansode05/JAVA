@@ -6,7 +6,7 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import java.util.List;
 
-import com.banking.transaction.entities.Operation;
+import com.banking.transaction.entities.Transaction;
 import com.banking.transaction.entities.Account;
 import com.banking.transaction.dtos.AccountRequest;
 
@@ -23,8 +23,8 @@ public class AccountHandler {
     }
 
     public Mono<ServerResponse> getAccountDetails(ServerRequest request){
-        int accNo = Integer.parseInt(request.pathVariable("accountNo"));
-        Account account = accountDepartment.showAccountDetails(accNo);
+        int accountNo = Integer.parseInt(request.pathVariable("accountNo"));
+        Account account = accountDepartment.showAccountDetails(accountNo);
 
         if (account == null) {
             return ServerResponse.notFound().build();
@@ -33,12 +33,12 @@ public class AccountHandler {
     }
 
     public Mono<ServerResponse> credit(ServerRequest request){
-        int accNo = Integer.parseInt(request.pathVariable("accountNo"));
+        int accountNo = Integer.parseInt(request.pathVariable("accountNo"));
         double amount = Double.parseDouble(request.pathVariable("amount"));
-        boolean status = accountDepartment.credit(amount, accNo);
+        boolean status = accountDepartment.credit(amount, accountNo);
 
         if (status) {
-            Account updatedAccount = accountDepartment.showAccountDetails(accNo);
+            Account updatedAccount = accountDepartment.showAccountDetails(accountNo);
             return ServerResponse.ok().bodyValue(updatedAccount);
         } else {
             return ServerResponse.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -47,12 +47,12 @@ public class AccountHandler {
     }
 
     public Mono<ServerResponse> debit(ServerRequest request){
-        int accNo = Integer.parseInt(request.pathVariable("accountNo"));
+        int accountNo = Integer.parseInt(request.pathVariable("accountNo"));
         double amount = Double.parseDouble(request.pathVariable("amount"));
-        boolean status = accountDepartment.debit(amount, accNo);
+        boolean status = accountDepartment.debit(amount, accountNo);
 
         if (status) {
-            Account updatedAccount = accountDepartment.showAccountDetails(accNo);
+            Account updatedAccount = accountDepartment.showAccountDetails(accountNo);
             return ServerResponse.ok().bodyValue(updatedAccount);
         } else {
             return ServerResponse.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -63,11 +63,11 @@ public class AccountHandler {
     public Mono<ServerResponse> createAccount(ServerRequest request){
       return request.bodyToMono(AccountRequest.class)
       .flatMap(body->{
-        int accNo=body.getAccountNo();
+        int accountNo=body.getAccountNo();
         String name=body.getName();
         double balance=body.getBalance();
 
-        boolean status=accountDepartment.createAccount(accNo,name,balance);
+        boolean status=accountDepartment.createAccount(accountNo,name,balance);
         if(status){
             return ServerResponse.ok().bodyValue("Account created successfully");
         }else{
@@ -78,16 +78,16 @@ public class AccountHandler {
     }
 
     public Mono<ServerResponse> getStatement(ServerRequest request){
-        int accNo = Integer.parseInt(request.pathVariable("accountNo"));
-        List<Operation> statement=accountDepartment.getStatement(accNo);
+        int accountNo = Integer.parseInt(request.pathVariable("accountNo"));
+        List<Transaction> statement=accountDepartment.getStatement(accountNo);
         return ServerResponse.ok().bodyValue(statement);
     }
 
     public Mono<ServerResponse> transaction(ServerRequest request){
-        int fromAccNo = Integer.parseInt(request.pathVariable("fromAccountNo"));
-        int toAccNo = Integer.parseInt(request.pathVariable("toAccountNo"));
+        int fromAccountNo = Integer.parseInt(request.pathVariable("fromAccountNo"));
+        int toAccountNo = Integer.parseInt(request.pathVariable("toAccountNo"));
         double amount = Double.parseDouble(request.pathVariable("amount"));
-        boolean status=accountDepartment.transaction(fromAccNo,toAccNo,amount);
+        boolean status=accountDepartment.transaction(fromAccountNo,toAccountNo,amount);
         if(status){
             return ServerResponse.ok().bodyValue("Transaction succed!!!");
         }else{
@@ -97,9 +97,9 @@ public class AccountHandler {
     }
 
     public Mono<ServerResponse> applyInterest(ServerRequest request){
-        int accNo = Integer.parseInt(request.pathVariable("accountNo"));
+        int accountNo = Integer.parseInt(request.pathVariable("accountNo"));
         double interest = Double.parseDouble(request.pathVariable("interest"));
-        double appliedInterest=accountDepartment.applyInterest(accNo,interest);
+        double appliedInterest=accountDepartment.applyInterest(accountNo,interest);
         return ServerResponse.ok().bodyValue("Applied Interest : "+appliedInterest);
     }
 

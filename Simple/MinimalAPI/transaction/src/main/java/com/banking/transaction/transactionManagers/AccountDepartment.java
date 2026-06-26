@@ -1,81 +1,86 @@
 package com.banking.transaction.transactionManagers;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.time.temporal.ChronoUnit;
 import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
 import com.banking.transaction.entities.Account;
-import com.banking.transaction.entities.Operation;
+import com.banking.transaction.entities.Transaction;
 import com.banking.transaction.listeners.AccountListener;
 import com.banking.transaction.listeners.AccountListenerImpl;
-import com.banking.transaction.repositories.OperationFileManager.OperationsFileIO;
-import com.banking.transaction.repositories.OperationFileManager.OperationsFileIOImpl;
 import com.banking.transaction.repositories.accountFileManager.AccountFileIO;
 import com.banking.transaction.repositories.accountFileManager.AccountFileIOImpl;
-import com.banking.transaction.transactionManagers.operations.IAccountOperation;
-import com.banking.transaction.transactionManagers.operations.IDepositOperation;
-import com.banking.transaction.transactionManagers.operations.IWithdrawOperation;
-import com.banking.transaction.transactionManagers.operations.IFundTransfer;
-import com.banking.transaction.transactionManagers.operations.IInterestOperation;
+import com.banking.transaction.repositories.transactionFileManager.TransactionsFileIO;
+import com.banking.transaction.repositories.transactionFileManager.TransactionsFileIOImpl;
+import com.banking.transaction.transactionManagers.transactions.IAccountTransaction;
+import com.banking.transaction.transactionManagers.transactions.IDepositTransaction;
+import com.banking.transaction.transactionManagers.transactions.IWithdrawTransaction;
+import com.banking.transaction.transactionManagers.transactions.IFundTransfer;
+import com.banking.transaction.transactionManagers.transactions.IInterestTransaction;
 
 @Component
-public class AccountDepartment implements IDepositOperation,IWithdrawOperation,IAccountOperation,IFundTransfer,IInterestOperation{
+public class AccountDepartment implements IDepositTransaction,IWithdrawTransaction,IAccountTransaction,IFundTransfer,IInterestTransaction{
 
-    @Override 
-    public boolean credit(double amount,int accountNo){
-        AccountFileIO accountFile=new AccountFileIOImpl();
-        OperationsFileIO operationsFile=new OperationsFileIOImpl();
-        AccountListener listener=new AccountListenerImpl();
-       
-        try{
-            List<Account> accountList=accountFile.deserializeAccount();
-            List<Operation> operations=operationsFile.deserializeOperation();
-            for(Account a:accountList){
-                if(a.getAccountNo()==accountNo){
-                    double newBalance=a.getBalance();
-                    newBalance+=amount;
-                    a.setBalance(newBalance);
-                    Operation operation = new Operation(a.getAccountNo(),"credited",LocalDateTime.now(),amount,a.getBalance());
-                    operations.add(operation);
-                    operationsFile.serializeOperation(operations);
-                    listener.onCredit(amount, newBalance);
-                }
-            }
-            accountFile.serializeAccount(accountList);
+    @Override
+    public boolean credit(double creditAmount, int accountNo) {
+        AccountFileIO accountFile = new AccountFileIOImpl();
+        TransactionsFileIO transactionsFile = new TransactionsFileIOImpl();
+        AccountListener listener = new AccountListenerImpl();
+
+        try {
+            List<Account> accounts = accountFile.deserializeAccount();
+            List<Transaction> transactions = transactionsFile.deserializeTransaction();
+
+            Account account = accounts.stream().filter(a -> a.getAccountNo() == accountNo).findFirst().orElse(null);
+
+            if (account == null)
+                return false;
+
+            double newBalance = account.getBalance() + creditAmount;
+            account.setBalance(newBalance);
+
+            transactions.add(new Transaction(accountNo,"credited",LocalDateTime.now(),creditAmount,newBalance));
+
+            transactionsFile.serializeTransaction(transactions);
+            accountFile.serializeAccount(accounts);
+            listener.onCredit(creditAmount, newBalance);
+
             return true;
-        }catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-    }
+    }   
 
     @Override
-    public boolean debit(double amount,int accountNo){
+    public boolean debit(double debitAmount,int accountNo){
         AccountFileIO accountFile=new AccountFileIOImpl();
-        OperationsFileIO operationsFile=new OperationsFileIOImpl();
+        TransactionsFileIO transactionsFile=new TransactionsFileIOImpl();
         AccountListener listener=new AccountListenerImpl();
 
         try{
             List<Account> accountList=accountFile.deserializeAccount();
-            List<Operation> operations=operationsFile.deserializeOperation();
-            for(Account a:accountList){
-                if((a.getAccountNo()==accountNo) && amount<a.getBalance()){
-                    double newBalance=a.getBalance();
-                    newBalance-=amount;
-                    a.setBalance(newBalance);
-                    Operation operation = new Operation(a.getAccountNo(),"debited",LocalDateTime.now(),amount,a.getBalance());
-                    operations.add(operation);
-                    operationsFile.serializeOperation(operations);
-                    listener.onDebit(amount,newBalance);
-                }
-            }
+            List<Transaction> transactions=transactionsFile.deserializeTransaction();
+           
+            Account account = accountList.stream().filter(a -> a.getAccountNo() == accountNo).findFirst().orElse(null);
+
+            double newBalance=account.getBalance();
+            newBalance-=debitAmount;
+            account.setBalance(newBalance);
+
+            transactions.add(new Transaction(account.getAccountNo(),"debited",LocalDateTime.now(),debitAmount,account.getBalance()));
+           
+            transactionsFile.serializeTransaction(transactions);
             accountFile.serializeAccount(accountList);
+            listener.onDebit(debitAmount,newBalance);
+            
             return true;
+
         }catch(Exception e){
             e.printStackTrace();
             return false;
@@ -85,15 +90,10 @@ public class AccountDepartment implements IDepositOperation,IWithdrawOperation,I
     @Override
     public Account showAccountDetails(int accountNo){
         AccountFileIO accountFile=new AccountFileIOImpl();
-        Account account=new Account();
+       
         try{
             List<Account> accountList=accountFile.deserializeAccount();
-            for(Account a:accountList){
-                if(accountNo==a.getAccountNo()){
-                    System.out.println(a);
-                    account=a;
-                }
-            }
+            Account account=accountList.stream().filter(a->a.getAccountNo()==accountNo).findFirst().orElse(null);                  
             return account;
         }catch(Exception e){
             e.printStackTrace();
@@ -102,13 +102,12 @@ public class AccountDepartment implements IDepositOperation,IWithdrawOperation,I
     }
 
     @Override
-    public boolean createAccount(int accNo,String name,double balance){
+    public boolean createAccount(int accountNo,String name,double balance){
         AccountFileIO accountFile=new AccountFileIOImpl();
         List<Account> accountList=accountFile.deserializeAccount();
 
-        Account account = new Account(accNo,name,balance,LocalDateTime.now());
+        Account account = new Account(accountNo,name,balance,LocalDateTime.now());
         try{
-            accountList=accountFile.deserializeAccount();
             accountList.add(account);
             accountFile.serializeAccount(accountList);
             return true;
@@ -118,28 +117,17 @@ public class AccountDepartment implements IDepositOperation,IWithdrawOperation,I
       }
     }
 
-    @Override
-    public List<Operation> getStatement(int accountNo){
-        OperationsFileIO operationsFile=new OperationsFileIOImpl();
-        List<Operation> operations=operationsFile.deserializeOperation();
-        List<Operation> accOperations=new ArrayList<Operation>();
-        int count=0;
-        for(Operation o:operations){
-            if(o.getAccountNo()==accountNo){
-                accOperations.add(o);
-                count++;
-            }
-        }
+   @Override
+    public List<Transaction> getStatement(int accountNo) {
+        TransactionsFileIO transactionsFile = new TransactionsFileIOImpl();
+        List<Transaction> transactions = transactionsFile.deserializeTransaction();
+        List<Transaction> acctransactions = transactions.stream().filter(o -> o.getAccountNo() == accountNo).toList();
+        int count = acctransactions.size();
         System.out.println(count);
-        if(count>5){
-            List<Operation> printOperations=new ArrayList<Operation>();
-            for(int i=(count-1);i>=(count-5);i--){
-                printOperations.add(accOperations.get(i));
-            }
-            return printOperations;
-        }else{
-            return accOperations;
+        if (count > 5) {
+            return acctransactions.subList(count - 5, count);
         }
+        return acctransactions;
     }
 
     @Override
@@ -147,15 +135,8 @@ public class AccountDepartment implements IDepositOperation,IWithdrawOperation,I
         try{
             AccountFileIO accountFile=new AccountFileIOImpl();
             List<Account> accountList=accountFile.deserializeAccount();
-
-            for(Account a:accountList){
-                if (accountNo1==a.getAccountNo()){
-                    debit(amount,accountNo1);
-                }
-                if(accountNo2==a.getAccountNo()){
-                    credit(amount,accountNo2);
-                }
-            }
+            accountList.stream().filter(a -> a.getAccountNo() == accountNo1).forEach(a -> debit(amount, accountNo1));
+            accountList.stream().filter(a -> a.getAccountNo() == accountNo2).forEach(a -> credit(amount, accountNo2));
             return true;
         }catch(Exception e){
             e.printStackTrace();
@@ -164,72 +145,39 @@ public class AccountDepartment implements IDepositOperation,IWithdrawOperation,I
     }
 
     @Override
-    public double applyInterest(int accountNo,double interest){
+    public double applyInterest(int accountNo, double interest) {
 
-        AccountFileIO accountFile=new AccountFileIOImpl();
-        OperationsFileIO operationsFile=new OperationsFileIOImpl();
-        List<Account> accountList=accountFile.deserializeAccount();
-        List<Operation> operations=operationsFile.deserializeOperation();
-        List<Operation> getLog=new ArrayList<Operation>();
-        List<Double> interests=new ArrayList<Double>();
-        double totalinterest=0;
+        AccountFileIO accountFile = new AccountFileIOImpl();
+        TransactionsFileIO transactionsFile = new TransactionsFileIOImpl();
 
-        for(Operation o:operations){
-            if(o.getAccountNo()==accountNo){
-                getLog.add(o);
-            }
-        }
+        List<Account> accounts = accountFile.deserializeAccount();
+        List<Transaction> transactions = transactionsFile.deserializeTransaction();
 
-       for(int i=0;i<getLog.size()-1;i++){
-        LocalDate startDate = getLog.get(i).getDatetime().toLocalDate();
-        LocalDate endDate = getLog.get(i+1).getDatetime().toLocalDate();
-        double addInterest = interestCalculation(startDate,endDate,interest,getLog.get(i).getBalance());        
-        interests.add(addInterest);
-       }
+        List<Transaction> log = transactions.stream().filter(o -> o.getAccountNo() == accountNo).toList();    // Java 16+ (Java 8: collect(Collectors.toList()))
 
-       if(getLog == null || getLog.isEmpty()){
-            System.out.println("No operation history found.");
+        if (log.isEmpty()) {
+            System.out.println("No transaction history found.");
             return 0;
         }
 
-       double getBalance=0;
-       int getIndex=getLog.size()-1;
+        double totalInterest = 0;
 
-        LocalDateTime lastTransactionDate=getLog.get(getIndex).getDatetime();
-
-       for(Account a:accountList){
-        if(a.getAccountNo()==accountNo){
-            getBalance=a.getBalance();
+        for (int i = 0; i < log.size() - 1; i++) {
+            totalInterest += interestCalculation(log.get(i).getDatetime().toLocalDate(),log.get(i + 1).getDatetime().toLocalDate(),interest,log.get(i).getBalance());
         }
-       }
-    
-       for(int i=0;i<=interests.size()-1;i++){
-        totalinterest+=interests.get(i);
-       }
 
-       double interestTillCurrentDate=interestCalculation(lastTransactionDate.toLocalDate(),LocalDate.now(),interest,getBalance);
-       totalinterest+=interestTillCurrentDate;
-       System.out.println("total interest after :"+totalinterest);
+        double currentBalance = accounts.stream().filter(a -> a.getAccountNo() == accountNo).findFirst().map(Account::getBalance).orElse(0.0);
 
-       double newBalance=getBalance+=totalinterest;
-       System.out.println("The balance after appling interest :"+newBalance);
-       credit(totalinterest,accountNo);
-       return totalinterest;
+        totalInterest += interestCalculation(log.get(log.size() - 1).getDatetime().toLocalDate(),LocalDate.now(),interest,currentBalance);
+        credit(totalInterest, accountNo);
+        return totalInterest;
     }
 
     @Override
     public void applyInteresttoAll(double interest){  
         AccountFileIO accountFile=new AccountFileIOImpl();
         List<Account> accountList=accountFile.deserializeAccount();
-        List<Integer> accNo=new ArrayList<Integer>();
-
-        for(Account a: accountList){
-            accNo.add(a.getAccountNo());
-        }
-
-        for(int i:accNo){
-            applyInterest(i, interest);
-        }
+        accountList.forEach(a -> applyInterest(a.getAccountNo(), interest));
     }
 
     @Override
