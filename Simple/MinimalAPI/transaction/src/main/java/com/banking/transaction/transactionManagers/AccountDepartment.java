@@ -156,8 +156,11 @@ public class AccountDepartment implements IDepositTransaction,IWithdrawTransacti
         List<Transaction> log = transactions.stream().filter(o -> o.getAccountNo() == accountNo).toList();    // Java 16+ (Java 8: collect(Collectors.toList()))
 
         if (log.isEmpty()) {
-            System.out.println("No transaction history found.");
-            return 0;
+            double accountInterest=applyInterestToAccountWithoutTransaction(accountNo, interest);
+            if(accountInterest>0.0){
+                credit(accountInterest,accountNo);
+            }
+            return accountInterest;
         }
 
         double totalInterest = 0;
@@ -189,6 +192,23 @@ public class AccountDepartment implements IDepositTransaction,IWithdrawTransacti
         double calculateBasePower=Math.pow(base, power);
         double finaAmount= principleAmount*(calculateBasePower);
         double calculatedInterest = finaAmount-principleAmount; 
+        return calculatedInterest;
+    }
+
+    public double applyInterestToAccountWithoutTransaction(int accountNo,double interest){
+        AccountFileIO accountFile=new AccountFileIOImpl();
+        List<Account> accountList=accountFile.deserializeAccount();
+        double calculatedInterest=0;
+        for(Account a:accountList){
+            if(a.getAccountNo()==accountNo){
+                LocalDate startDate=a.getDatetime().toLocalDate();
+                System.out.println(startDate);
+                LocalDate endDate=LocalDate.now();
+                System.out.println(endDate);
+                calculatedInterest=interestCalculation(startDate, endDate, interest, a.getBalance());
+            }
+        }
+
         return calculatedInterest;
     }
 
