@@ -193,8 +193,9 @@ public class AccountDepartment implements IDepositOperation,IWithdrawOperation,I
        }
 
        if(getLog == null || getLog.isEmpty()){
-            System.out.println("No operation history found.");
-            return 0;
+            double accountInterest=applyInterestToAccountWithoutTransaction(accountNo, interest);
+            credit(accountInterest,accountNo);
+            return accountInterest;
         }
 
        double getBalance=0;
@@ -246,6 +247,21 @@ public class AccountDepartment implements IDepositOperation,IWithdrawOperation,I
         double calculateBasePower=Math.pow(base, power);
         double finaAmount= principleAmount*(calculateBasePower);
         double calculatedInterest = finaAmount-principleAmount; 
+        return calculatedInterest;
+    }
+
+    public double applyInterestToAccountWithoutTransaction(int accountNo,double interest){
+        AccountFileIO accountFile=new AccountFileIOImpl();
+        List<Account> accountList=accountFile.deserializeAccount();
+        double calculatedInterest=0;
+        for(Account a:accountList){
+            if(a.getAccountNo()==accountNo){
+                LocalDate startDate=a.getDatetime().toLocalDate();
+                LocalDate endDate=LocalDate.now();
+                calculatedInterest=interestCalculation(startDate, endDate, interest, a.getBalance());
+            }
+        }
+
         return calculatedInterest;
     }
 
